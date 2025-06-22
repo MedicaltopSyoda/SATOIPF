@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>SATOI プラットフォーム</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #f4f7f9;
+      color: #333;
+    }
+    header {
+      background-color: #1e88e5;
+      color: white;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      border-left: 5px solid #1e88e5;
+      padding-left: 10px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #1e88e5;
+      font-size: 18px;
+    }
+    .card ul {
+      padding-left: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #eee;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SATOI</h1>
+  <nav>
+    <a href="#">登録</a>
+    <a href="#">マイページ</a>
+  </nav>
+</header>
+
+<section>
+  <div class="section-title">入り口</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>最初のステップ</h3>
+      <ul>
+        <li>問診</li>
+        <li>データ入力（診断書・治療歴・お薬手帳・検査データ）</li>
+        <li>AIによる24時間相談</li>
+        <li>オンライン無料相談（SATOIコーディネーター）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">がん関連情報（Physical）</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>基礎知識</h3>
+      <ul>
+        <li>がん総論</li>
+        <li>がんの治療法108種</li>
+        <li>良性腫瘍と悪性腫瘍</li>
+        <li>無自覚症状と自覚症状</li>
+        <li>がんのステージについて</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>治療・副作用</h3>
+      <ul>
+        <li>抗がん剤と副作用</li>
+        <li>放射線と副作用</li>
+        <li>痛み</li>
+        <li>世界のがん治療</li>
+        <li>治療効果・世界エビデンス</li>
+        <li>健康保険と治療</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">メンタルサポート・ソーシャル</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>相談・体験記</h3>
+      <ul>
+        <li>SATOIコーディネーターによるオンライン無料相談</li>
+        <li>AIによる24時間相談</li>
+        <li>私の体験記（患者）</li>
+        <li>私の体験記（EC）</li>
+        <li>私の体験記（看護師）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>情報発信</h3>
+      <ul>
+        <li>医師ブログ</li>
+        <li>看護師ブログ</li>
+        <li>SATOIコーディネーターブログ</li>
+        <li>Webinar（Live・オンデマンド）</li>
+        <li>News</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">生活支援</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>日常を支える</h3>
+      <ul>
+        <li>がんとともに生きる</li>
+        <li>治療と生活を支える保険</li>
+        <li>サバイバー支援企業の紹介</li>
+        <li>就職・アルバイト</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">データ管理</div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>システム構成</h3>
+      <ul>
+        <li>問診、診察、治療、相談のデータをAWSに集約</li>
+        <li>将来的に解析AIを実装</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 SATOI Inc. All rights reserved.
+</footer>
+
+</body>
+</html>
