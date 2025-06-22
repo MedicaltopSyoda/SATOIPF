@@ -4,36 +4,53 @@
   <meta charset="UTF-8">
   <title>SATOI プラットフォーム</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       background-color: #f4f7f9;
       color: #333;
+      line-height: 1.6;
     }
     header {
-      background-color: #1e88e5;
+      background-color: #4db6ac;
       color: white;
       padding: 15px 20px;
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
     header h1 {
       margin: 0;
       font-size: 24px;
     }
-    nav a {
-      color: white;
-      margin-left: 20px;
+    nav.main-nav a {
+      margin-left: 15px;
       text-decoration: none;
+      color: white;
       font-weight: bold;
+    }
+    .hero {
+      background-color: #e0f2f1;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 28px;
+      color: #00796b;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 16px;
+      color: #555;
     }
     section {
       padding: 40px 20px;
@@ -43,8 +60,9 @@
     .section-title {
       font-size: 22px;
       margin-bottom: 20px;
-      border-left: 5px solid #1e88e5;
+      border-left: 5px solid #4db6ac;
       padding-left: 10px;
+      color: #00796b;
     }
     .card-grid {
       display: grid;
@@ -59,18 +77,29 @@
     }
     .card h3 {
       margin-top: 0;
-      color: #1e88e5;
+      color: #00796b;
       font-size: 18px;
     }
     .card ul {
       padding-left: 20px;
+      margin: 0;
     }
     footer {
       text-align: center;
       padding: 20px;
-      background-color: #eee;
+      background-color: #eeeeee;
       font-size: 14px;
       color: #777;
+      margin-top: 40px;
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav.main-nav {
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
@@ -78,28 +107,36 @@
 
 <header>
   <h1>SATOI</h1>
-  <nav>
-    <a href="#">登録</a>
-    <a href="#">マイページ</a>
+  <nav class="main-nav">
+    <a href="#entry">最初のステップ</a>
+    <a href="#physical">がん情報</a>
+    <a href="#mental">メンタル</a>
+    <a href="#life">生活支援</a>
+    <a href="#data">データ管理</a>
   </nav>
 </header>
 
-<section>
-  <div class="section-title">入り口</div>
+<section class="hero">
+  <h2>「あなたの今が、誰かの未来を変える力になる」</h2>
+  <p>SATOIは、がんと向き合うあなたを、治療・生活・こころのすべてから支えます。</p>
+</section>
+
+<section id="entry">
+  <div class="section-title">最初のステップ</div>
   <div class="card-grid">
     <div class="card">
-      <h3>最初のステップ</h3>
+      <h3>入り口</h3>
       <ul>
         <li>問診</li>
         <li>データ入力（診断書・治療歴・お薬手帳・検査データ）</li>
         <li>AIによる24時間相談</li>
-        <li>オンライン無料相談（SATOIコーディネーター）</li>
+        <li>SATOIコーディネーターによるオンライン無料相談</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section>
+<section id="physical">
   <div class="section-title">がん関連情報（Physical）</div>
   <div class="card-grid">
     <div class="card">
@@ -126,7 +163,7 @@
   </div>
 </section>
 
-<section>
+<section id="mental">
   <div class="section-title">メンタルサポート・ソーシャル</div>
   <div class="card-grid">
     <div class="card">
@@ -152,7 +189,7 @@
   </div>
 </section>
 
-<section>
+<section id="life">
   <div class="section-title">生活支援</div>
   <div class="card-grid">
     <div class="card">
@@ -167,7 +204,7 @@
   </div>
 </section>
 
-<section>
+<section id="data">
   <div class="section-title">データ管理</div>
   <div class="card-grid">
     <div class="card">
