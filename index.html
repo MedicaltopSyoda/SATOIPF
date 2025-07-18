@@ -2,152 +2,57 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>がん患者支援ナビ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>がん患者支援ナビ｜あなたの回遊ストーリー</title>
   <style>
-    :root {
-      --primary-color: #007acc;
-      --secondary-color: #e0f4ff;
-      --text-color: #333;
-      --background-color: #f9f9f9;
-      --card-shadow: rgba(0, 0, 0, 0.08);
-    }
-
     body {
       margin: 0;
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      background-color: var(--background-color);
-      color: var(--text-color);
+      background: #f5fafe;
+      color: #333;
     }
-
     header {
-      background: var(--primary-color);
-      color: white;
-      padding: 30px 20px;
+      background: #007acc;
+      color: #fff;
       text-align: center;
+      padding: 40px 20px;
     }
-
     header h1 {
       margin: 0;
-      font-size: 2em;
     }
-
-    .search-bar {
-      background: white;
-      padding: 15px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      box-shadow: 0 2px 4px var(--card-shadow);
+    .story-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-
-    .search-bar select, .search-bar input {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      width: 200px;
+    .step {
+      border-left: 5px solid #007acc;
+      padding-left: 20px;
+      margin-bottom: 40px;
     }
-
-    .search-bar button {
-      padding: 10px 20px;
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .search-bar button:hover {
-      background-color: #005f99;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
-
-    .sidebar {
-      width: 240px;
-      background: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 4px var(--card-shadow);
-      border-radius: 8px;
-    }
-
-    .sidebar h3 {
-      color: var(--primary-color);
+    .step h2 {
+      color: #007acc;
       margin-top: 0;
     }
-
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
+    .step p {
+      margin: 10px 0 15px;
     }
-
-    .sidebar li {
-      margin: 10px 0;
-      padding-left: 16px;
-      position: relative;
-      cursor: pointer;
-      color: #007acc;
+    .step a {
+      display: inline-block;
+      background: #007acc;
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 4px;
     }
-
-    .sidebar li::before {
-      content: "▶";
-      position: absolute;
-      left: 0;
-      color: #007acc;
-      font-size: 12px;
-    }
-
-    .main {
-      flex: 1;
-      padding: 0 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-left: 6px solid var(--primary-color);
-      box-shadow: 0 2px 6px var(--card-shadow);
-      border-radius: 6px;
-    }
-
-    .card h4 {
-      margin-top: 0;
-      color: var(--primary-color);
-    }
-
     footer {
-      background: var(--primary-color);
-      color: white;
+      background: #007acc;
+      color: #fff;
       text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-      }
-
-      .main {
-        padding: 0;
-      }
-
-      .search-bar {
-        flex-direction: column;
-        align-items: center;
-      }
+      padding: 20px;
+      margin-top: 60px;
     }
   </style>
 </head>
@@ -155,64 +60,53 @@
 
 <header>
   <h1>がん患者支援ナビ</h1>
-  <p>検査・治療・相談・生活支援を探せるポータル</p>
+  <p>あなたの“知りたい”に寄り添う情報ストーリー</p>
 </header>
 
-<div class="search-bar">
-  <select>
-    <option>病名で探す</option>
-    <option>乳がん</option>
-    <option>肺がん</option>
-    <option>胃がん</option>
-  </select>
-  <select>
-    <option>治療法で探す</option>
-    <option>標準治療</option>
-    <option>免疫療法</option>
-    <option>遺伝子治療</option>
-  </select>
-  <select>
-    <option>保険で探す</option>
-    <option>診断時に降りる保険</option>
-    <option>がんでも入れる保険</option>
-  </select>
-  <input type="text" placeholder="キーワード検索">
-  <button onclick="alert('検索機能はモックです')">検索</button>
-</div>
-
-<div class="container">
-  <div class="sidebar">
-    <h3>カテゴリ</h3>
-    <ul>
-      <li>コンシェルジュ相談</li>
-      <li>検査・診断</li>
-      <li>治療法</li>
-      <li>患者体験談</li>
-      <li>生活支援</li>
-      <li>保険情報</li>
-      <li>コミュニティ</li>
-      <li>イベント・講座</li>
-    </ul>
+<div class="story-container">
+  
+  <div class="step">
+    <h2>① 不安な気持ちでトップページにアクセス</h2>
+    <p>「乳がんって診断されたけど、何から調べたらいいの？」</p>
+    <a href="#">病名・治療法から探す</a>
   </div>
 
-  <div class="main">
-    <div class="card">
-      <h4>コンシェルジュ相談サービス</h4>
-      <p>専門スタッフが治療や生活の悩みに寄り添います。面談予約やチャット相談が可能です。</p>
-    </div>
-    <div class="card">
-      <h4>遺伝子検査でわかる治療方針</h4>
-      <p>遺伝子変異を調べることで、より効果的な治療法を選択できます。</p>
-    </div>
-    <div class="card">
-      <h4>がんでも入れる保険特集</h4>
-      <p>診断後でも加入できる保険や、治療費を補助する制度を紹介します。</p>
-    </div>
-    <div class="card">
-      <h4>患者会・コミュニティ</h4>
-      <p>同じ境遇の人とつながることで、情報交換や心の支えになります。</p>
-    </div>
+  <div class="step">
+    <h2>② 治療法の選択肢を調べる</h2>
+    <p>「標準治療？免疫療法？私に合うのはどれ？」</p>
+    <a href="#">治療法カテゴリを見る</a>
   </div>
+
+  <div class="step">
+    <h2>③ コンシェルジュに相談してみる</h2>
+    <p>「医療のプロに今の不安を相談してみよう」</p>
+    <a href="#">コンシェルジュ相談へ</a>
+  </div>
+
+  <div class="step">
+    <h2>④ 経済面の不安も出てくる</h2>
+    <p>「治療費、大丈夫かな……保険は入れる？」</p>
+    <a href="#">保険情報を探す</a>
+  </div>
+
+  <div class="step">
+    <h2>⑤ 同じ境遇の人の声を聞きたい</h2>
+    <p>「自分だけじゃないんだ、少し安心した」</p>
+    <a href="#">患者体験談を読む</a>
+  </div>
+
+  <div class="step">
+    <h2>⑥ つながりと支えを求めて</h2>
+    <p>「コミュニティに参加して励まし合いたい」</p>
+    <a href="#">患者コミュニティを見る</a>
+  </div>
+
+  <div class="step">
+    <h2>⑦ 日々の生活に役立つ情報がほしい</h2>
+    <p>「ウィッグ、就労支援、家族との接し方……」</p>
+    <a href="#">生活支援の情報を探す</a>
+  </div>
+
 </div>
 
 <footer>
