@@ -2,145 +2,154 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>がん患者支援プラットフォーム</title>
+  <title>がん患者支援ナビ</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f8f9fa;
+      background: #f4f4f4;
       color: #333;
     }
     header {
-      background: #006699;
+      background: #004080;
       color: white;
       padding: 20px;
       text-align: center;
     }
-    nav {
-      background: #e0e0e0;
-      padding: 10px;
+    .search-bar {
+      background: #fff;
+      padding: 20px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-    }
-    nav a {
-      margin: 5px 10px;
-      text-decoration: none;
-      color: #006699;
-      font-weight: bold;
-    }
-    section {
-      padding: 20px;
-      border-bottom: 1px solid #ccc;
-    }
-    h2 {
-      color: #006699;
-      margin-top: 0;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 10px;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .search-bar input, .search-bar select {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+    .search-bar button {
+      padding: 10px 20px;
+      background: #004080;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .container {
+      display: flex;
+      margin: 20px;
+    }
+    .sidebar {
+      width: 250px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .sidebar h3 {
+      margin-top: 0;
+      color: #004080;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar li {
+      margin: 10px 0;
+      cursor: pointer;
+      color: #006699;
+    }
+    .main {
+      flex: 1;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      border-left: 5px solid #006699;
+    }
+    .card h4 {
+      margin: 0 0 10px;
+      color: #004080;
     }
     footer {
-      background: #006699;
+      background: #004080;
       color: white;
       text-align: center;
       padding: 10px;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>がん患者支援プラットフォーム</h1>
-  <p>検査・治療・相談・生活支援までワンストップで</p>
+  <h1>がん患者支援ナビ</h1>
+  <p>検査・治療・相談・生活支援を探せるポータル</p>
 </header>
 
-<nav>
-  <a href="#user">ユーザー登録</a>
-  <a href="#concierge">コンシェルジュ</a>
-  <a href="#medical">検査・治療</a>
-  <a href="#community">コミュニティ</a>
-  <a href="#content">Webコンテンツ</a>
-  <a href="#social">生活・保険支援</a>
-  <a href="#help">HELP DESK</a>
-</nav>
+<div class="search-bar">
+  <select>
+    <option>病名で探す</option>
+    <option>乳がん</option>
+    <option>肺がん</option>
+    <option>胃がん</option>
+  </select>
+  <select>
+    <option>治療法で探す</option>
+    <option>標準治療</option>
+    <option>免疫療法</option>
+    <option>遺伝子治療</option>
+  </select>
+  <select>
+    <option>保険で探す</option>
+    <option>診断時に降りる保険</option>
+    <option>がんでも入れる保険</option>
+  </select>
+  <input type="text" placeholder="キーワード検索">
+  <button>検索</button>
+</div>
 
-<section id="user">
-  <h2>👤 ユーザー情報・マイページ</h2>
-  <div class="grid">
-    <div>会員登録 / Social Login</div>
-    <div>マイページ（履歴・保険情報）</div>
-    <div>認証情報・ユーザーマスタ</div>
+<div class="container">
+  <div class="sidebar">
+    <h3>カテゴリ</h3>
+    <ul>
+      <li>コンシェルジュ相談</li>
+      <li>検査・診断</li>
+      <li>治療法</li>
+      <li>患者体験談</li>
+      <li>生活支援</li>
+      <li>保険情報</li>
+      <li>コミュニティ</li>
+      <li>イベント・講座</li>
+    </ul>
   </div>
-</section>
 
-<section id="concierge">
-  <h2>🧑‍⚕️ コンシェルジュ・相談</h2>
-  <div class="grid">
-    <div>コンシェルジュリスト</div>
-    <div>詳細プロフィール</div>
-    <div>面談申し込み</div>
-    <div>チャットボット相談</div>
-    <div>認定プログラム</div>
+  <div class="main">
+    <div class="card">
+      <h4>コンシェルジュ相談サービス</h4>
+      <p>専門スタッフが治療や生活の悩みに寄り添います。面談予約やチャット相談が可能です。</p>
+    </div>
+    <div class="card">
+      <h4>遺伝子検査でわかる治療方針</h4>
+      <p>遺伝子変異を調べることで、より効果的な治療法を選択できます。</p>
+    </div>
+    <div class="card">
+      <h4>がんでも入れる保険特集</h4>
+      <p>診断後でも加入できる保険や、治療費を補助する制度を紹介します。</p>
+    </div>
+    <div class="card">
+      <h4>患者会・コミュニティ</h4>
+      <p>同じ境遇の人とつながることで、情報交換や心の支えになります。</p>
+    </div>
   </div>
-</section>
-
-<section id="medical">
-  <h2>🧪 検査・診断・治療</h2>
-  <div class="grid">
-    <div>検査方法・種類</div>
-    <div>標準治療</div>
-    <div>補助療法（ビタミンCなど）</div>
-    <div>遺伝子治療・免疫療法</div>
-    <div>新薬・治験情報</div>
-  </div>
-</section>
-
-<section id="community">
-  <h2>🤝 コミュニティ・体験談</h2>
-  <div class="grid">
-    <div>P2P / D2D / P2HCPコミュニティ</div>
-    <div>患者会・座談会・インタビュー</div>
-    <div>市民公開講座・学会</div>
-    <div>投稿・閲覧・マネタイズ機能</div>
-  </div>
-</section>
-
-<section id="content">
-  <h2>📚 Webコンテンツ</h2>
-  <div class="grid">
-    <div>辞典（病名・薬剤・治療法）</div>
-    <div>ブログ・体験談</div>
-    <div>動画（YouTube・TikTok）</div>
-    <div>SEOコンテンツ（bigWord）</div>
-  </div>
-</section>
-
-<section id="social">
-  <h2>🏠 Socialサポート</h2>
-  <div class="grid">
-    <div>就労支援（企業連携）</div>
-    <div>保険情報（がんでも入れる）</div>
-    <div>生活支援（行政・民間）</div>
-    <div>民間療法的生活（食事・温泉）</div>
-    <div>公的制度（高額療養費など）</div>
-  </div>
-</section>
-
-<section id="help">
-  <h2>📞 HELP DESK</h2>
-  <div class="grid">
-    <div>問い合わせフォーム</div>
-    <div>FAQ</div>
-    <div>サポートチャット</div>
-  </div>
-</section>
+</div>
 
 <footer>
-  <p>&copy; 2025 がん患者支援プラットフォーム</p>
+  <p>&copy; 2025 がん患者支援ナビ</p>
 </footer>
 
 </body>
