@@ -2,363 +2,146 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>SATOI プラットフォーム</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <title>がん患者支援プラットフォーム</title>
   <style>
-    * { box-sizing: border-box; }
     body {
+      font-family: 'Arial', sans-serif;
       margin: 0;
-      font-family: 'Noto Sans JP', sans-serif;
-      background-color: #f4f7f9;
+      padding: 0;
+      background: #f8f9fa;
       color: #333;
-      line-height: 1.6;
     }
     header {
-      background-color: #4db6ac;
+      background: #006699;
       color: white;
-      padding: 15px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #e0e0e0;
+      padding: 10px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       flex-wrap: wrap;
+      justify-content: center;
     }
-    header h1 { margin: 0; font-size: 24px; }
-    nav.main-nav a {
-      margin-left: 15px;
+    nav a {
+      margin: 5px 10px;
       text-decoration: none;
-      color: white;
+      color: #006699;
       font-weight: bold;
     }
-    .lang-switcher {
-      margin-left: 10px;
-      padding: 5px;
-      font-size: 14px;
-    }
-    .hero {
-      background-color: #e0f2f1;
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .hero h2 { font-size: 28px; color: #00796b; margin-bottom: 10px; }
-    .hero p { font-size: 16px; color: #555; }
-    .cta-button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #ffb74d;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 6px;
-      transition: background-color 0.3s;
-    }
-    .cta-button:hover { background-color: #ffa726; }
     section {
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .section-title {
-      font-size: 22px;
-      margin-bottom: 20px;
-      border-left: 5px solid #4db6ac;
-      padding-left: 10px;
-      color: #00796b;
-    }
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background-color: white;
-      border-radius: 8px;
       padding: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-bottom: 1px solid #ccc;
     }
-    .card h3 {
+    h2 {
+      color: #006699;
       margin-top: 0;
-      color: #00796b;
-      font-size: 18px;
     }
-    .card ul { padding-left: 20px; margin: 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+    }
     footer {
+      background: #006699;
+      color: white;
       text-align: center;
-      padding: 20px;
-      background-color: #eeeeee;
-      font-size: 14px;
-      color: #777;
-      margin-top: 40px;
-    }
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav.main-nav {
-        margin-top: 10px;
-      }
+      padding: 10px;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>SATOI</h1>
-  <nav class="main-nav">
-    <a href="#entry" data-i18n="nav_entry">最初のステップ</a>
-    <a href="#physical" data-i18n="nav_physical">がん情報</a>
-    <a href="#mental" data-i18n="nav_mental">メンタル</a>
-    <a href="#life" data-i18n="nav_life">生活支援</a>
-    <a href="#data" data-i18n="nav_data">データ管理</a>
-    <select id="lang-switcher" class="lang-switcher" onchange="switchLanguage(this.value)">
-      <option value="ja">日本語</option>
-      <option value="en">English</option>
-    </select>
-  </nav>
+  <h1>がん患者支援プラットフォーム</h1>
+  <p>検査・治療・相談・生活支援までワンストップで</p>
 </header>
 
-<section class="hero">
-  <h2><span data-i18n="hero_title">「SATOIは身体的治療だけでなく「患者さんの人生全体」に関わる環境を支援します。
-多職種連携・情報共有・AI支援で、患者のQOLを高めます。」</span></h2>
-  <p><span data-i18n="hero_desc">SATOIは、がんと向き合うあなたを、治療・生活・こころのすべてから支えます。</span></p>
-  <a href="#contact" class="cta-button"><span data-i18n="cta_main">無料相談はこちら</span></a>
-</section>
+<nav>
+  <a href="#user">ユーザー登録</a>
+  <a href="#concierge">コンシェルジュ</a>
+  <a href="#medical">検査・治療</a>
+  <a href="#community">コミュニティ</a>
+  <a href="#content">Webコンテンツ</a>
+  <a href="#social">生活・保険支援</a>
+  <a href="#help">HELP DESK</a>
+</nav>
 
-<section id="entry">
-  <div class="section-title"><span data-i18n="section_entry">最初のステップ</span></div>
-  <div class="card-grid">
-    <div class="card">
-      <h3 data-i18n="card_entry_title">入り口</h3>
-      <ul>
-        <li data-i18n="entry_q1">問診</li>
-        <li data-i18n="entry_q2">データ入力（診断書・治療歴・お薬手帳・検査データ）</li>
-        <li data-i18n="entry_q3">AIによる24時間相談</li>
-        <li data-i18n="entry_q4">SATOIコーディネーターによるオンライン無料相談</li>
-      </ul>
-    </div>
+<section id="user">
+  <h2>👤 ユーザー情報・マイページ</h2>
+  <div class="grid">
+    <div>会員登録 / Social Login</div>
+    <div>マイページ（履歴・保険情報）</div>
+    <div>認証情報・ユーザーマスタ</div>
   </div>
 </section>
 
-<section id="physical">
-  <div class="section-title"><span data-i18n="section_physical">がん関連情報（Physical）</span></div>
-  <div class="card-grid">
-    <div class="card">
-      <h3 data-i18n="card_physical_base">基礎知識</h3>
-      <ul>
-        <li data-i18n="physical_1">がん総論</li>
-        <li data-i18n="physical_2">がんの治療法108種</li>
-        <li data-i18n="physical_3">良性腫瘍と悪性腫瘍</li>
-        <li data-i18n="physical_4">無自覚症状と自覚症状</li>
-        <li data-i18n="physical_5">がんのステージについて</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3 data-i18n="card_physical_treatment">治療・副作用</h3>
-      <ul>
-        <li data-i18n="physical_6">抗がん剤と副作用</li>
-        <li data-i18n="physical_7">放射線と副作用</li>
-        <li data-i18n="physical_8">痛み</li>
-        <li data-i18n="physical_9">世界のがん治療</li>
-        <li data-i18n="physical_10">治療効果・世界エビデンス</li>
-        <li data-i18n="physical_11">健康保険と治療</li>
-      </ul>
-    </div>
-  </div>
-</section>
-<section id="mental">
-  <div class="section-title"><span data-i18n="section_mental">メンタルサポート・ソーシャル</span></div>
-  <div class="card-grid">
-    <div class="card">
-      <h3 data-i18n="card_mental_consult">相談・体験記</h3>
-      <ul>
-        <li data-i18n="mental_1">SATOIコーディネーターによるオンライン無料相談</li>
-        <li data-i18n="mental_2">AIによる24時間相談</li>
-        <li data-i18n="mental_3">私の体験記（患者）</li>
-        <li data-i18n="mental_4">私の体験記（EC）</li>
-        <li data-i18n="mental_5">私の体験記（看護師）</li>
-      </ul>
-      <a href="#contact" class="cta-button"><span data-i18n="cta_now">今すぐ無料で相談</span></a>
-    </div>
-    <div class="card">
-      <h3 data-i18n="card_mental_info">情報発信</h3>
-      <ul>
-        <li data-i18n="mental_6">医師ブログ</li>
-        <li data-i18n="mental_7">看護師ブログ</li>
-        <li data-i18n="mental_8">SATOIコーディネーターブログ</li>
-        <li data-i18n="mental_9">Webinar（Live・オンデマンド）</li>
-        <li data-i18n="mental_10">News</li>
-      </ul>
-    </div>
+<section id="concierge">
+  <h2>🧑‍⚕️ コンシェルジュ・相談</h2>
+  <div class="grid">
+    <div>コンシェルジュリスト</div>
+    <div>詳細プロフィール</div>
+    <div>面談申し込み</div>
+    <div>チャットボット相談</div>
+    <div>認定プログラム</div>
   </div>
 </section>
 
-<section id="life">
-  <div class="section-title"><span data-i18n="section_life">生活支援</span></div>
-  <div class="card-grid">
-    <div class="card">
-      <h3 data-i18n="card_life">日常を支える</h3>
-      <ul>
-        <li data-i18n="life_1">がんとともに生きる</li>
-        <li data-i18n="life_2">治療と生活を支える保険</li>
-        <li data-i18n="life_3">サバイバー支援企業の紹介</li>
-        <li data-i18n="life_4">就職・アルバイト</li>
-      </ul>
-    </div>
+<section id="medical">
+  <h2>🧪 検査・診断・治療</h2>
+  <div class="grid">
+    <div>検査方法・種類</div>
+    <div>標準治療</div>
+    <div>補助療法（ビタミンCなど）</div>
+    <div>遺伝子治療・免疫療法</div>
+    <div>新薬・治験情報</div>
   </div>
 </section>
 
-<section id="data">
-  <div class="section-title"><span data-i18n="section_data">データ管理</span></div>
-  <div class="card-grid">
-    <div class="card">
-      <h3 data-i18n="card_data">システム構成</h3>
-      <ul>
-        <li data-i18n="data_1">問診、診察、治療、相談のデータをAWSに集約</li>
-        <li data-i18n="data_2">将来的に解析AIを実装</li>
-      </ul>
-    </div>
+<section id="community">
+  <h2>🤝 コミュニティ・体験談</h2>
+  <div class="grid">
+    <div>P2P / D2D / P2HCPコミュニティ</div>
+    <div>患者会・座談会・インタビュー</div>
+    <div>市民公開講座・学会</div>
+    <div>投稿・閲覧・マネタイズ機能</div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="section-title"><span data-i18n="section_contact">お問い合わせ（準備中）</span></div>
-  <p><span data-i18n="contact_text">こちらに「無料相談フォーム」や「LINE連携」などを設置予定です。</span></p>
+<section id="content">
+  <h2>📚 Webコンテンツ</h2>
+  <div class="grid">
+    <div>辞典（病名・薬剤・治療法）</div>
+    <div>ブログ・体験談</div>
+    <div>動画（YouTube・TikTok）</div>
+    <div>SEOコンテンツ（bigWord）</div>
+  </div>
+</section>
+
+<section id="social">
+  <h2>🏠 Socialサポート</h2>
+  <div class="grid">
+    <div>就労支援（企業連携）</div>
+    <div>保険情報（がんでも入れる）</div>
+    <div>生活支援（行政・民間）</div>
+    <div>民間療法的生活（食事・温泉）</div>
+    <div>公的制度（高額療養費など）</div>
+  </div>
+</section>
+
+<section id="help">
+  <h2>📞 HELP DESK</h2>
+  <div class="grid">
+    <div>問い合わせフォーム</div>
+    <div>FAQ</div>
+    <div>サポートチャット</div>
+  </div>
 </section>
 
 <footer>
-  <span data-i18n="footer">&copy; 2025 SATOI Inc. All rights reserved.</span>
+  <p>&copy; 2025 がん患者支援プラットフォーム</p>
 </footer>
-
-<script>
-const translations = {
-  ja: {
-    nav_entry: "最初のステップ",
-    nav_physical: "がん情報",
-    nav_mental: "メンタル",
-    nav_life: "生活支援",
-    nav_data: "データ管理",
-    hero_title: "「あなたの今が、誰かの未来を変える力になる」",
-    hero_desc: "SATOIは、がんと向き合うあなたを、治療・生活・こころのすべてから支えます。",
-    cta_main: "無料相談はこちら",
-    cta_now: "今すぐ無料で相談",
-    section_entry: "最初のステップ",
-    card_entry_title: "入り口",
-    entry_q1: "問診",
-    entry_q2: "データ入力（診断書・治療歴・お薬手帳・検査データ）",
-    entry_q3: "AIによる24時間相談",
-    entry_q4: "SATOIコーディネーターによるオンライン無料相談",
-    section_physical: "がん関連情報（Physical）",
-    card_physical_base: "基礎知識",
-    physical_1: "がん総論",
-    physical_2: "がんの治療法108種",
-    physical_3: "良性腫瘍と悪性腫瘍",
-    physical_4: "無自覚症状と自覚症状",
-    physical_5: "がんのステージについて",
-    card_physical_treatment: "治療・副作用",
-    physical_6: "抗がん剤と副作用",
-    physical_7: "放射線と副作用",
-    physical_8: "痛み",
-    physical_9: "世界のがん治療",
-    physical_10: "治療効果・世界エビデンス",
-    physical_11: "健康保険と治療",
-    section_mental: "メンタルサポート・ソーシャル",
-    card_mental_consult: "相談・体験記",
-    mental_1: "SATOIコーディネーターによるオンライン無料相談",
-    mental_2: "AIによる24時間相談",
-    mental_3: "私の体験記（患者）",
-    mental_4: "私の体験記（EC）",
-    mental_5: "私の体験記（看護師）",
-    card_mental_info: "情報発信",
-    mental_6: "医師ブログ",
-    mental_7: "看護師ブログ",
-    mental_8: "SATOIコーディネーターブログ",
-    mental_9: "Webinar（Live・オンデマンド）",
-    mental_10: "News",
-    section_life: "生活支援",
-    card_life: "日常を支える",
-    life_1: "がんとともに生きる",
-    life_2: "治療と生活を支える保険",
-    life_3: "サバイバー支援企業の紹介",
-    life_4: "就職・アルバイト",
-    section_data: "データ管理",
-    card_data: "システム構成",
-    data_1: "問診、診察、治療、相談のデータをAWSに集約",
-    data_2: "将来的に解析AIを実装",
-    section_contact: "お問い合わせ（準備中）",
-    contact_text: "こちらに「無料相談フォーム」や「LINE連携」などを設置予定です。",
-    footer: "© 2025 SATOI Inc. All rights reserved."
-  },
-  en: {
-    nav_entry: "First Steps",
-    nav_physical: "Cancer Info",
-    nav_mental: "Mental",
-    nav_life: "Life Support",
-    nav_data: "Data",
-    hero_title: "“Your present has the power to change someone’s future.”",
-    hero_desc: "SATOI supports you in every aspect: treatment, daily life, and mental well-being.",
-    cta_main: "Get Free Consultation",
-    cta_now: "Get Free Help Now",
-    section_entry: "First Steps",
-    card_entry_title: "Getting Started",
-    entry_q1: "Initial Questionnaire",
-    entry_q2: "Upload Your Data (Reports, Meds, Test Results)",
-    entry_q3: "24/7 AI Consultation",
-    entry_q4: "Online Free Support (Coordinator)",
-    section_physical: "Cancer Information (Physical)",
-    card_physical_base: "Basic Knowledge",
-    physical_1: "Cancer Overview",
-    physical_2: "108 Treatment Options",
-    physical_3: "Benign vs Malignant Tumors",
-    physical_4: "Silent vs Symptomatic Signs",
-    physical_5: "Cancer Staging",
-    card_physical_treatment: "Treatment & Side Effects",
-    physical_6: "Chemo & Side Effects",
-    physical_7: "Radiation & Side Effects",
-    physical_8: "Pain",
-    physical_9: "Global Treatments",
-    physical_10: "Efficacy & Evidence",
-    physical_11: "Insurance & Coverage",
-    section_mental: "Mental & Social Support",
-    card_mental_consult: "Consultation & Stories",
-    mental_1: "Free Online Support by Coordinator",
-    mental_2: "24/7 AI Counseling",
-    mental_3: "Patient Stories",
-    mental_4: "EC Stories",
-    mental_5: "Nurse Stories",
-    card_mental_info: "Content & Updates",
-    mental_6: "Doctor Blog",
-    mental_7: "Nurse Blog",
-    mental_8: "Coordinator Blog",
-    mental_9: "Webinars (Live/On-demand)",
-    mental_10: "News",
-    section_life: "Life Support",
-    card_life: "Everyday Support",
-    life_1: "Living with Cancer",
-    life_2: "Insurance for Treatment & Life",
-    life_3: "Supportive Companies",
-    life_4: "Jobs & Side Work",
-    section_data: "Data Management",
-    card_data: "System Structure",
-    data_1: "All data stored in AWS securely",
-    data_2: "AI Analysis Coming Soon",
-    section_contact: "Contact (Coming Soon)",
-    contact_text: "We plan to add a consultation form or LINE integration here.",
-    footer: "© 2025 SATOI Inc. All rights reserved."
-  }
-};
-
-function switchLanguage(lang) {
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    el.textContent = translations[lang][key] || key;
-  });
-}
-</script>
 
 </body>
 </html>
