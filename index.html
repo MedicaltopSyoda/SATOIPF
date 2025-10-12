@@ -1,117 +1,337 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>がん患者支援ナビ｜あなたの回遊ストーリー</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SATOI｜がんとともに生きる情報プラットフォーム</title>
+  <meta name="description" content="がんの種類・悩み・治療法・体験談・制度情報を横断検索。AI相談と有人コンシェルジュで支援するSATOI公式サイト。">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background: #f5fafe;
-      color: #333;
+    /* ===== Reset / Base ===== */
+    *,*::before,*::after{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Noto Sans JP","Hiragino Kaku Gothic ProN","メイリオ",sans-serif;line-height:1.6;color:#111;background:#fff}
+    img{max-width:100%;height:auto;display:block}
+    a{color:#0b63d1;text-decoration:none}
+    a:hover,a:focus{text-decoration:underline}
+    :focus-visible{outline:3px solid #0b63d1;outline-offset:2px}
+
+    /* ===== Layout ===== */
+    .container{width:min(1200px,92vw);margin-inline:auto}
+    .stack{display:grid;gap:1.2rem}
+    .grid{display:grid;gap:1rem}
+    .grid--cards{grid-template-columns:repeat(12,1fr)}
+    .card{grid-column:span 12;background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:1rem;box-shadow:0 1px 1px rgba(0,0,0,.04)}
+    @media (min-width:640px){
+      .card--3{grid-column:span 6}
+      .card--4{grid-column:span 4}
+      .card--6{grid-column:span 6}
     }
-    header {
-      background: #007acc;
-      color: #fff;
-      text-align: center;
-      padding: 40px 20px;
+    @media (min-width:960px){
+      .card--3{grid-column:span 4}
+      .card--4{grid-column:span 3}
+      .card--6{grid-column:span 6}
     }
-    header h1 {
-      margin: 0;
+
+    /* ===== Header / Nav ===== */
+    .skiplink{position:absolute;left:-9999px;top:auto}
+    .skiplink:focus{left:12px;top:12px;background:#fff;padding:.5rem .75rem;border-radius:8px;box-shadow:0 0 0 3px #0b63d1}
+    header{border-bottom:1px solid #eee;background:#fff}
+    .header__bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem;color:#0b1b33}
+    .logo__mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0b63d1,#10b981)}
+    .nav{display:flex;align-items:center;gap:.6rem}
+    .nav__primary{display:none;gap:.4rem;flex-wrap:wrap}
+    .nav__link{display:inline-block;padding:.55rem .75rem;border-radius:10px;color:#0b1b33}
+    .nav__link:hover{background:#f4f7fb}
+    .nav__cta{display:flex;align-items:center;gap:.5rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.62rem .9rem;border-radius:10px;border:1px solid #d9e2ef;background:#fff;color:#0b1b33;font-weight:600}
+    .btn--primary{background:#0b63d1;border-color:#0b63d1;color:#fff}
+    .btn--ghost{background:#fff;border-color:#d9e2ef}
+    .menu-toggle{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #d9e2ef;border-radius:10px;background:#fff;padding:.5rem .7rem}
+    @media (min-width:980px){
+      .menu-toggle{display:none}
+      .nav__primary{display:flex}
     }
-    .story-container {
-      max-width: 900px;
-      margin: 30px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .step {
-      border-left: 5px solid #007acc;
-      padding-left: 20px;
-      margin-bottom: 40px;
-    }
-    .step h2 {
-      color: #007acc;
-      margin-top: 0;
-    }
-    .step p {
-      margin: 10px 0 15px;
-    }
-    .step a {
-      display: inline-block;
-      background: #007acc;
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-    }
-    footer {
-      background: #007acc;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 60px;
-    }
+
+    /* ===== Hero Search ===== */
+    .hero{background:linear-gradient(180deg,#f7fbff, #ffffff);padding:2.2rem 0 1.6rem;border-bottom:1px solid #eef3f7}
+    .hero__title{font-size:clamp(1.3rem,2.5vw,1.8rem);margin:0 0 .4rem}
+    .hero__lead{color:#3b4758;margin:0 0 1rem}
+    .search{display:grid;gap:.6rem}
+    .search__row{display:flex;gap:.5rem;flex-wrap:wrap}
+    .search__input{flex:1 1 320px;min-width:240px;border:1.5px solid #cfe0f6;border-radius:12px;padding:.85rem 1rem;font-size:1rem}
+    .search__btn{white-space:nowrap}
+    .helper{font-size:.9rem;color:#5a677a}
+
+    /* ===== Sections ===== */
+    section{padding:1.6rem 0}
+    .section__head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:.8rem}
+    .section__title{font-size:1.2rem;margin:0}
+    .card h3{font-size:1rem;margin:.2rem 0 .4rem}
+    .eyebrow{font-size:.78rem;color:#5a677a;letter-spacing:.04em}
+    .badge{display:inline-block;font-size:.75rem;background:#eef6ff;color:#0b63d1;border:1px solid #d7e9ff;border-radius:999px;padding:.2rem .5rem}
+
+    /* ===== Footer ===== */
+    footer{border-top:1px solid #eee;background:#fafbfc}
+    .footer__inner{padding:1.4rem 0;display:grid;gap:.6rem}
+    .footlinks{display:flex;flex-wrap:wrap;gap:.8rem}
+    .copyright{color:#586370;font-size:.9rem}
+
+    /* ===== Utilities ===== */
+    .bg-soft{background:#fbfdff}
+    .cta-bar{display:flex;gap:.8rem;flex-wrap:wrap}
   </style>
 </head>
 <body>
+  <a href="#main" class="skiplink">本文へスキップ</a>
 
-<header>
-  <h1>がん患者支援ナビ</h1>
-  <p>あなたの“知りたい”に寄り添う情報ストーリー</p>
-</header>
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="container header__bar" role="navigation" aria-label="グローバルナビゲーション">
+      <a class="logo" href="/" aria-label="SATOI ホームへ">
+        <span class="logo__mark" aria-hidden="true"></span>
+        <span>SATOI</span>
+      </a>
 
-<div class="story-container">
-  
-  <div class="step">
-    <h2>① 不安な気持ちでトップページにアクセス</h2>
-    <p>「乳がんって診断されたけど、何から調べたらいいの？」</p>
-    <a href="#">病名・治療法から探す</a>
-  </div>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span aria-hidden="true">☰</span><span>メニュー</span>
+      </button>
 
-  <div class="step">
-    <h2>② 治療法の選択肢を調べる</h2>
-    <p>「標準治療？免疫療法？私に合うのはどれ？」</p>
-    <a href="#">治療法カテゴリを見る</a>
-  </div>
+      <nav id="primary-nav" class="nav" aria-label="主要メニュー">
+        <div class="nav__primary" role="menubar">
+          <a class="nav__link" role="menuitem" href="#cancers">がんの種類</a>
+          <a class="nav__link" role="menuitem" href="#concerns">悩み</a>
+          <a class="nav__link" role="menuitem" href="#treatments">治療法</a>
+          <a class="nav__link" role="menuitem" href="#money">お金・制度</a>
+          <a class="nav__link" role="menuitem" href="#stories">体験談</a>
+          <a class="nav__link" role="menuitem" href="#consult">相談</a>
+          <a class="nav__link" role="menuitem" href="#pro">医師向け</a>
+        </div>
+        <div class="nav__cta">
+          <a class="btn btn--ghost" href="#login">ログイン</a>
+          <a class="btn btn--primary" href="#signup">会員登録</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-  <div class="step">
-    <h2>③ コンシェルジュに相談してみる</h2>
-    <p>「医療のプロに今の不安を相談してみよう」</p>
-    <a href="#">コンシェルジュ相談へ</a>
-  </div>
+  <!-- ===== Hero Search ===== -->
+  <main id="main">
+    <section class="hero">
+      <div class="container stack">
+        <h1 class="hero__title">がんを知る。選べる治療、周囲の支え、社会復帰。</h1>
+        <p class="hero__lead">がん種・症状・治療法・悩みで横断検索。AI相談と有人コンシェルジュがあなたの一歩を支援します。</p>
 
-  <div class="step">
-    <h2>④ 経済面の不安も出てくる</h2>
-    <p>「治療費、大丈夫かな……保険は入れる？」</p>
-    <a href="#">保険情報を探す</a>
-  </div>
+        <form class="search" role="search" aria-label="サイト内検索" action="/search" method="get">
+          <div class="search__row">
+            <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">検索キーワード</label>
+            <input id="q" name="q" class="search__input" type="search" placeholder="例：肺がん 免疫療法 副作用／高額療養費制度／家族 仕事 両立" autocomplete="on" />
+            <button class="btn btn--primary search__btn" type="submit" aria-label="検索を実行">検索</button>
+          </div>
+          <div class="helper" aria-hidden="true">よくある検索：<span class="badge">乳がん 再発</span> <span class="badge">抗がん剤 副作用 対策</span> <span class="badge">高額療養費 申請</span></div>
+        </form>
 
-  <div class="step">
-    <h2>⑤ 同じ境遇の人の声を聞きたい</h2>
-    <p>「自分だけじゃないんだ、少し安心した」</p>
-    <a href="#">患者体験談を読む</a>
-  </div>
+        <div class="cta-bar">
+          <a class="btn btn--primary" href="#consult">無料で相談を始める</a>
+          <a class="btn" href="#premium">有料会員なら専門家相談◯回/月</a>
+        </div>
+      </div>
+    </section>
 
-  <div class="step">
-    <h2>⑥ つながりと支えを求めて</h2>
-    <p>「コミュニティに参加して励まし合いたい」</p>
-    <a href="#">患者コミュニティを見る</a>
-  </div>
+    <!-- ===== Section: おすすめ（がん種・悩み・治療法・体験談・動画） ===== -->
+    <section id="cancers" aria-labelledby="sec-cancers">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="sec-cancers" class="section__title">がんの種類から探す</h2>
+          <a href="/cancers" aria-label="がんの種類一覧へ">一覧を見る</a>
+        </div>
+        <div class="grid grid--cards">
+          <article class="card card--3">
+            <p class="eyebrow">代表例</p>
+            <h3>肺がん｜初期症状・最新治療・5年生存率</h3>
+            <p>ステージ別の治療選択と副作用対策をわかりやすく解説。</p>
+            <a class="btn btn--ghost" href="/cancers/lung" aria-label="肺がんページへ">詳しく見る</a>
+          </article>
+          <article class="card card--3">
+            <p class="eyebrow">代表例</p>
+            <h3>乳がん｜検診の重要性・再発防止法</h3>
+            <p>検診から術式、ホルモン療法まで最新情報を網羅。</p>
+            <a class="btn btn--ghost" href="/cancers/breast">詳しく見る</a>
+          </article>
+          <article class="card card--3">
+            <p class="eyebrow">代表例</p>
+            <h3>膵臓がん｜難治性がんの選択肢</h3>
+            <p>標準治療と臨床試験の動向、緩和ケアのポイント。</p>
+            <a class="btn btn--ghost" href="/cancers/pancreatic">詳しく見る</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <div class="step">
-    <h2>⑦ 日々の生活に役立つ情報がほしい</h2>
-    <p>「ウィッグ、就労支援、家族との接し方……」</p>
-    <a href="#">生活支援の情報を探す</a>
-  </div>
+    <section id="concerns" class="bg-soft" aria-labelledby="sec-concerns">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="sec-concerns" class="section__title">悩みから探す</h2>
+          <a href="/concerns">一覧を見る</a>
+        </div>
+        <div class="grid grid--cards">
+          <article class="card card--6">
+            <h3>治療法を迷っている</h3>
+            <p>標準治療と自由診療、どう選ぶ？比較の観点を説明。</p>
+            <a class="btn btn--ghost" href="/concerns/choice">詳しく見る</a>
+          </article>
+          <article class="card card--6">
+            <h3>副作用がつらい</h3>
+            <p>吐き気・脱毛・しびれの対処法。生活のコツもまとめ。</p>
+            <a class="btn btn--ghost" href="/concerns/side-effects">詳しく見る</a>
+          </article>
+          <article class="card card--6">
+            <h3>仕事を続けたい／復帰したい</h3>
+            <p>就労支援制度、職場との向き合い方、産業医との連携。</p>
+            <a class="btn btn--ghost" href="/concerns/work">詳しく見る</a>
+          </article>
+          <article class="card card--6">
+            <h3>お金が心配</h3>
+            <p>がん治療費を抑える制度と支援まとめ。</p>
+            <a class="btn btn--ghost" href="/concerns/money">詳しく見る</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <section id="treatments" aria-labelledby="sec-treatments">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="sec-treatments" class="section__title">治療法から探す</h2>
+          <a href="/treatments">一覧を見る</a>
+        </div>
+        <div class="grid grid--cards">
+          <article class="card card--4">
+            <h3>手術</h3>
+            <p>術式・入院期間・合併症・費用目安を整理。</p>
+            <a class="btn btn--ghost" href="/treatments/surgery">詳しく見る</a>
+          </article>
+          <article class="card card--4">
+            <h3>抗がん剤（化学療法）</h3>
+            <p>レジメン、期間、副作用プロフィール。</p>
+            <a class="btn btn--ghost" href="/treatments/chemo">詳しく見る</a>
+          </article>
+          <article class="card card--4">
+            <h3>放射線治療</h3>
+            <p>適応・副作用・通院頻度の目安。</p>
+            <a class="btn btn--ghost" href="/treatments/radiation">詳しく見る</a>
+          </article>
+          <article class="card card--4">
+            <h3>免疫療法</h3>
+            <p>エビデンス、適応がん種、費用感。</p>
+            <a class="btn btn--ghost" href="/treatments/immunotherapy">詳しく見る</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <p>&copy; 2025 がん患者支援ナビ</p>
-</footer>
+    <section id="stories" class="bg-soft" aria-labelledby="sec-stories">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="sec-stories" class="section__title">体験談・ストーリー</h2>
+          <a href="/stories">一覧を見る</a>
+        </div>
+        <div class="grid grid--cards">
+          <article class="card card--3">
+            <p class="eyebrow">動画</p>
+            <h3>ステージ4からの復帰に向けて</h3>
+            <p>家族の支えと副作用対策の工夫。</p>
+            <a class="btn btn--ghost" href="/stories/001">再生する</a>
+          </article>
+          <article class="card card--3">
+            <p class="eyebrow">記事</p>
+            <h3>がん治療と仕事の両立</h3>
+            <p>上司と同僚への伝え方、実例。</p>
+            <a class="btn btn--ghost" href="/stories/002">読む</a>
+          </article>
+          <article class="card card--3">
+            <p class="eyebrow">記事</p>
+            <h3>家族としてできること</h3>
+            <p>距離感・声かけ・気持ちのケア。</p>
+            <a class="btn btn--ghost" href="/stories/003">読む</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section id="consult" aria-labelledby="sec-consult">
+      <div class="container">
+        <div class="section__head">
+          <h2 id="sec-consult" class="section__title">質問・相談コーナー</h2>
+        </div>
+        <div class="grid grid--cards">
+          <article class="card card--6">
+            <h3>AIに質問する</h3>
+            <p>すぐに疑問を解決。相談内容はマイページに保存（会員）。</p>
+            <a class="btn btn--primary" href="/consult/ai">AI相談を始める</a>
+          </article>
+          <article class="card card--6">
+            <h3>専門家に相談する（有人）</h3>
+            <p>コンシェルジュが状況整理をサポート。面談予約に対応。</p>
+            <a class="btn btn--ghost" href="/consult/human">有人相談の案内</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container footer__inner">
+      <nav aria-label="フッターナビ">
+        <div class="footlinks">
+          <a href="/terms">利用規約</a>
+          <a href="/privacy">プライバシーポリシー・データ同意</a>
+          <a href="/about">運営会社</a>
+          <a href="/supervision">医師監修ポリシー</a>
+          <a href="/news">ニュース</a>
+          <a href="/sitemap">サイトマップ</a>
+        </div>
+      </nav>
+      <p class="copyright">© SATOI Inc.</p>
+    </div>
+  </footer>
+
+  <script>
+    // アクセシブルなモバイルメニュー切替（ARIA対応）
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    const primary = document.querySelector('.nav__primary');
+
+    function setMenu(open){
+      toggle.setAttribute('aria-expanded', open);
+      if(open){
+        primary.style.display = 'flex';
+        primary.style.flexWrap = 'wrap';
+      }else{
+        if (window.matchMedia('(min-width:980px)').matches) {
+          primary.style.display = 'flex';
+        } else {
+          primary.style.display = 'none';
+        }
+      }
+    }
+    setMenu(false);
+    toggle?.addEventListener('click', () => {
+      const opened = toggle.getAttribute('aria-expanded') === 'true';
+      setMenu(!opened);
+    });
+    // 画面幅変更時に表示状態を同期
+    window.addEventListener('resize', () => {
+      if (window.matchMedia('(min-width:980px)').matches) {
+        primary.style.display = 'flex';
+        toggle.setAttribute('aria-expanded', true);
+      } else {
+        primary.style.display = 'none';
+        toggle.setAttribute('aria-expanded', false);
+      }
+    });
+  </script>
 </body>
 </html>
