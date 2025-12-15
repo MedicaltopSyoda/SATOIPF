@@ -2,336 +2,360 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SATOI｜がんとともに生きる情報プラットフォーム</title>
-  <meta name="description" content="がんの種類・悩み・治療法・体験談・制度情報を横断検索。AI相談と有人コンシェルジュで支援するSATOI公式サイト。">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>抗がん剤の副作用がつらい方へ｜SATOI（ワイヤーHTML）</title>
+  <meta name="description" content="「抗がん剤 副作用」で検索した方に向けたLPワイヤーの1ページ完結HTML（見出し＋本文骨子）。" />
   <style>
-    /* ===== Reset / Base ===== */
-    *,*::before,*::after{box-sizing:border-box}
-    html{-webkit-text-size-adjust:100%}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,"Noto Sans JP","Hiragino Kaku Gothic ProN","メイリオ",sans-serif;line-height:1.6;color:#111;background:#fff}
-    img{max-width:100%;height:auto;display:block}
-    a{color:#0b63d1;text-decoration:none}
-    a:hover,a:focus{text-decoration:underline}
-    :focus-visible{outline:3px solid #0b63d1;outline-offset:2px}
-
-    /* ===== Layout ===== */
-    .container{width:min(1200px,92vw);margin-inline:auto}
-    .stack{display:grid;gap:1.2rem}
-    .grid{display:grid;gap:1rem}
-    .grid--cards{grid-template-columns:repeat(12,1fr)}
-    .card{grid-column:span 12;background:#fff;border:1px solid #e8e8e8;border-radius:12px;padding:1rem;box-shadow:0 1px 1px rgba(0,0,0,.04)}
-    @media (min-width:640px){
-      .card--3{grid-column:span 6}
-      .card--4{grid-column:span 4}
-      .card--6{grid-column:span 6}
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a2f;
+      --text:#e9eefb;
+      --muted:#b7c2dd;
+      --line:rgba(233,238,251,.12);
+      --accent:#6ee7ff;
+      --accent2:#a78bfa;
+      --warn:#ffdd57;
+      --shadow: 0 8px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 980px;
     }
-    @media (min-width:960px){
-      .card--3{grid-column:span 4}
-      .card--4{grid-column:span 3}
-      .card--6{grid-column:span 6}
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(110,231,255,.14), transparent 60%),
+        radial-gradient(900px 500px at 85% 0%, rgba(167,139,250,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg), #070b14 70%);
+      line-height:1.75;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 28px 18px 88px;}
+    header.hero{
+      padding: 26px 18px 22px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow:hidden;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      font-size: 13px;
+      letter-spacing:.02em;
+      background: rgba(255,255,255,.03);
+    }
+    h1{
+      margin: 14px 0 8px;
+      font-size: clamp(26px, 3.6vw, 40px);
+      line-height:1.25;
+      letter-spacing:.01em;
+    }
+    .sub{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size: 15.5px;
+    }
+    .lead{
+      margin: 12px 0 0;
+      color: var(--text);
+      font-size: 16.5px;
+    }
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: .55rem;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight: 700;
+      letter-spacing: .02em;
+      transition: transform .08s ease, background .12s ease, border-color .12s ease;
+      min-height: 44px;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(233,238,251,.22);}
+    .btn.primary{
+      border-color: rgba(110,231,255,.35);
+      background: linear-gradient(90deg, rgba(110,231,255,.18), rgba(167,139,250,.16));
+    }
+    .btn.primary:hover{border-color: rgba(110,231,255,.55);}
+    .kicker{
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
     }
 
-    /* ===== Header / Nav ===== */
-    .skiplink{position:absolute;left:-9999px;top:auto}
-    .skiplink:focus{left:12px;top:12px;background:#fff;padding:.5rem .75rem;border-radius:8px;box-shadow:0 0 0 3px #0b63d1}
-    header{border-bottom:1px solid #eee;background:#fff}
-    .header__bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
-    .logo{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.1rem;color:#0b1b33}
-    .logo__mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#0b63d1,#10b981)}
-    .nav{display:flex;align-items:center;gap:.6rem}
-    .nav__primary{display:none;gap:.4rem;flex-wrap:wrap}
-    .nav__link{display:inline-block;padding:.55rem .75rem;border-radius:10px;color:#0b1b33}
-    .nav__link:hover{background:#f4f7fb}
-    .nav__cta{display:flex;align-items:center;gap:.5rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.62rem .9rem;border-radius:10px;border:1px solid #d9e2ef;background:#fff;color:#0b1b33;font-weight:600}
-    .btn--primary{background:#0b63d1;border-color:#0b63d1;color:#fff}
-    .btn--ghost{background:#fff;border-color:#d9e2ef}
-    .menu-toggle{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #d9e2ef;border-radius:10px;background:#fff;padding:.5rem .7rem}
-    @media (min-width:980px){
-      .menu-toggle{display:none}
-      .nav__primary{display:flex}
+    nav.toc{
+      margin-top: 18px;
+      padding: 12px 14px;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+    }
+    nav.toc strong{display:block; font-size: 13px; color: var(--muted); margin-bottom: 6px;}
+    nav.toc a{
+      display:inline-block;
+      margin: 6px 10px 0 0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      text-decoration:none;
+      font-size: 13px;
+      color: var(--text);
+    }
+    nav.toc a:hover{border-color: rgba(233,238,251,.22);}
+
+    section.card{
+      margin-top: 18px;
+      padding: 18px 18px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 6px 22px rgba(0,0,0,.22);
+    }
+    section.card h2{
+      margin: 2px 0 10px;
+      font-size: 20px;
+      letter-spacing: .01em;
+    }
+    .muted{color:var(--muted)}
+    ul{margin: 10px 0 0 18px}
+    li{margin: 6px 0}
+    .callout{
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,221,87,.25);
+      background: rgba(255,221,87,.08);
+      color: var(--text);
+    }
+    .split{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    @media (min-width: 860px){
+      .split{grid-template-columns: 1fr 1fr;}
+    }
+    .box{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.02);
+    }
+    .box h3{
+      margin: 0 0 6px;
+      font-size: 16px;
     }
 
-    /* ===== Hero Search ===== */
-    .hero{background:linear-gradient(180deg,#f7fbff, #ffffff);padding:2.2rem 0 1.6rem;border-bottom:1px solid #eef3f7}
-    .hero__title{font-size:clamp(1.3rem,2.5vw,1.8rem);margin:0 0 .4rem}
-    .hero__lead{color:#3b4758;margin:0 0 1rem}
-    .search{display:grid;gap:.6rem}
-    .search__row{display:flex;gap:.5rem;flex-wrap:wrap}
-    .search__input{flex:1 1 320px;min-width:240px;border:1.5px solid #cfe0f6;border-radius:12px;padding:.85rem 1rem;font-size:1rem}
-    .search__btn{white-space:nowrap}
-    .helper{font-size:.9rem;color:#5a677a}
+    footer{
+      margin-top: 18px;
+      padding: 16px 18px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      font-size: 12.5px;
+    }
 
-    /* ===== Sections ===== */
-    section{padding:1.6rem 0}
-    .section__head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:.8rem}
-    .section__title{font-size:1.2rem;margin:0}
-    .card h3{font-size:1rem;margin:.2rem 0 .4rem}
-    .eyebrow{font-size:.78rem;color:#5a677a;letter-spacing:.04em}
-    .badge{display:inline-block;font-size:.75rem;background:#eef6ff;color:#0b63d1;border:1px solid #d7e9ff;border-radius:999px;padding:.2rem .5rem}
-
-    /* ===== Footer ===== */
-    footer{border-top:1px solid #eee;background:#fafbfc}
-    .footer__inner{padding:1.4rem 0;display:grid;gap:.6rem}
-    .footlinks{display:flex;flex-wrap:wrap;gap:.8rem}
-    .copyright{color:#586370;font-size:.9rem}
-
-    /* ===== Utilities ===== */
-    .bg-soft{background:#fbfdff}
-    .cta-bar{display:flex;gap:.8rem;flex-wrap:wrap}
+    .sticky-cta{
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      background: rgba(7,11,20,.75);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(233,238,251,.12);
+      padding: 10px 14px;
+      z-index: 50;
+    }
+    .sticky-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .sticky-inner .label{
+      font-size: 13px;
+      color: var(--muted);
+      display:none;
+    }
+    @media (min-width: 680px){
+      .sticky-inner .label{display:block;}
+    }
   </style>
 </head>
+
 <body>
-  <a href="#main" class="skiplink">本文へスキップ</a>
+  <div class="wrap">
+    <header class="hero" id="top">
+      <span class="badge">LPワイヤー（骨子）｜検索KW：抗がん剤 副作用</span>
+      <h1>抗がん剤の副作用がつらい方へ<br><span class="muted">―「我慢する治療」以外の選択肢があります―</span></h1>
+      <p class="sub">※このページは、SATOIのLP構成案を「1ページ完結HTML」として出力したワイヤー（文章骨子）です。実運用時は医師監修・法務チェック・広告ポリシー準拠のうえ表現調整を行ってください。</p>
 
-  <!-- ===== Header ===== -->
-  <header>
-    <div class="container header__bar" role="navigation" aria-label="グローバルナビゲーション">
-      <a class="logo" href="/" aria-label="SATOI ホームへ">
-        <span class="logo__mark" aria-hidden="true"></span>
-        <span>SATOI</span>
-      </a>
+      <p class="lead">
+        抗がん剤治療を受ける中で、<strong>「副作用がつらい」「この治療を続けていいのか分からない」</strong>と感じていませんか。<br>
+        吐き気、食欲不振、手足のしびれ、強い倦怠感。治療を続けるほど、日常生活が削られていく感覚を抱く方は少なくありません。<br>
+        このページは、<strong>抗がん剤の副作用に悩む方が、落ち着いて“次の選択肢”を考えるためのページ</strong>です。
+      </p>
 
-      <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">
-        <span aria-hidden="true">☰</span><span>メニュー</span>
-      </button>
+      <div class="cta-row">
+        <a class="btn primary" href="#cta">抗がん剤の副作用について相談する（無料・オンライン可）</a>
+        <a class="btn" href="#sec3">治療の選択肢を先に見る</a>
+      </div>
+      <p class="kicker">（ナッジ例）同じ悩みでこのページを見ている方が、今月<strong>◯,◯◯◯人</strong>います</p>
 
-      <nav id="primary-nav" class="nav" aria-label="主要メニュー">
-        <div class="nav__primary" role="menubar">
-          <a class="nav__link" role="menuitem" href="#cancers">がんの種類</a>
-          <a class="nav__link" role="menuitem" href="#concerns">悩み</a>
-          <a class="nav__link" role="menuitem" href="#treatments">治療法</a>
-          <a class="nav__link" role="menuitem" href="#money">お金・制度</a>
-          <a class="nav__link" role="menuitem" href="#stories">体験談</a>
-          <a class="nav__link" role="menuitem" href="#consult">相談</a>
-          <a class="nav__link" role="menuitem" href="#pro">医師向け</a>
-        </div>
-        <div class="nav__cta">
-          <a class="btn btn--ghost" href="#login">ログイン</a>
-          <a class="btn btn--primary" href="#signup">会員登録</a>
-        </div>
+      <nav class="toc" aria-label="目次">
+        <strong>目次</strong>
+        <a href="#sec0">共感</a>
+        <a href="#sec1">副作用の整理</a>
+        <a href="#sec2">我慢しかない？</a>
+        <a href="#sec3">治療の全体像</a>
+        <a href="#sec4">分子標的薬</a>
+        <a href="#sec5">免疫療法</a>
+        <a href="#sec6">樹状細胞ワクチン</a>
+        <a href="#sec7">治療を設計し直す</a>
+        <a href="#sec8">相談（ライトクリニック銀座）</a>
       </nav>
+    </header>
+
+    <section class="card" id="sec0">
+      <h2>共感：こんな悩みはありませんか</h2>
+      <ul>
+        <li>副作用がつらいが、我慢するしかないと思っている</li>
+        <li>治療が効いているのか分からない</li>
+        <li>医師に「仕方ない」と言われ、不安を抱えたまま続けている</li>
+        <li>他の治療法があると聞くが、よく分からず怖い</li>
+      </ul>
+      <p class="muted">これらは、決して特別な悩みではありません。</p>
+    </section>
+
+    <section class="card" id="sec1">
+      <h2>抗がん剤の副作用とは何が起きているのか</h2>
+      <p>抗がん剤は、がん細胞を攻撃する一方で、正常な細胞にも影響を与える治療です。そのため、次のような副作用が起こることがあります。</p>
+      <div class="split">
+        <div class="box">
+          <h3>主な副作用（例）</h3>
+          <ul>
+            <li>吐き気、嘔吐、下痢</li>
+            <li>食欲不振、体重減少</li>
+            <li>手足のしびれ、感覚異常</li>
+            <li>白血球低下による感染リスク</li>
+            <li>強い倦怠感、脱毛</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>補足</h3>
+          <p class="muted">副作用の出方や強さには個人差があります。</p>
+          <div class="callout"><strong>ポイント：</strong>「副作用＝失敗」ではありません。ただし<strong>“耐え続けることが最適とは限らない”</strong>場合もあります。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="sec2">
+      <h2>副作用は「我慢するしかないもの」なのでしょうか</h2>
+      <p>多くの方が「抗がん剤＝副作用は避けられない」と思い込んでいます。しかし、医療の現場では<strong>副作用の強さが、治療の“合い・合わなさ”を示している場合</strong>もあります。</p>
+      <p>副作用が強いからといって、治療を否定する必要はありません。ただし、<strong>治療を見直すサイン</strong>である可能性もあります。</p>
+    </section>
+
+    <section class="card" id="sec3">
+      <h2>がん治療は、抗がん剤だけではありません</h2>
+      <p>現在のがん治療は、抗がん剤だけで成り立っているわけではありません。患者さんの状態やがんの性質に応じて、治療法を組み合わせたり、切り替えたりする時代になっています。</p>
+      <p class="muted">ここからは、抗がん剤以外の代表的な治療法について簡単に整理します。</p>
+    </section>
+
+    <section class="card" id="sec4">
+      <h2>分子標的薬という選択肢</h2>
+      <p>分子標的薬は、がん細胞が持つ特定の遺伝子変異や分子を狙って作用する治療です。</p>
+      <ul>
+        <li>正常な細胞への影響が比較的少ない</li>
+        <li>抗がん剤より副作用が軽くなるケースがある</li>
+      </ul>
+      <div class="callout"><strong>重要：</strong>適応の見極めには<strong>遺伝子検査</strong>が鍵になります。</div>
+      <p>抗がん剤の副作用が強い方の中には、分子標的薬が適しているケースもあります。</p>
+    </section>
+
+    <section class="card" id="sec5">
+      <h2>免疫療法について</h2>
+      <p>免疫療法は、自分自身の免疫の力を使ってがんと闘う治療です。抗がん剤とは作用の仕組みが異なり、副作用の出方も異なります。</p>
+      <p>すべての方に効果があるわけではありませんが、抗がん剤と併用・切り替えを行うことで<strong>生活の質（QOL）が改善するケース</strong>も報告されています。</p>
+      <div class="callout"><strong>ポイント：</strong>「流行っているから選ぶ」のではなく、<strong>ご自身の状態に合っているかを見極めること</strong>が重要です。</div>
+    </section>
+
+    <section class="card" id="sec6">
+      <h2>樹状細胞ワクチン療法という考え方</h2>
+      <p>樹状細胞ワクチン療法は、免疫に「がんを敵だと認識させる」ことを目的とした治療です。</p>
+      <ul>
+        <li>比較的副作用が少ない</li>
+        <li>標準治療と併用されることが多い</li>
+      </ul>
+      <p>万能な治療ではありませんが、抗がん剤の副作用に悩む方にとって<strong>選択肢として知っておく価値のある治療</strong>の一つです。</p>
+    </section>
+
+    <section class="card" id="sec7">
+      <h2>大切なのは「治療をやめる」ことではありません</h2>
+      <p>抗がん剤の副作用がつらいと感じたとき、多くの方が「治療を続けるか、やめるか」という二択で考えてしまいます。しかし実際には、<strong>治療を“設計し直す”という選択肢</strong>があります。</p>
+      <ul>
+        <li>治療法の組み合わせを見直す</li>
+        <li>副作用を軽減する方向で調整する</li>
+        <li>別の治療を検討する</li>
+      </ul>
+      <p class="muted">そのためには、一度立ち止まり、専門家と整理することが重要です。</p>
+    </section>
+
+    <section class="card" id="sec8">
+      <h2>抗がん剤の副作用に悩む方の治療相談について（ライトクリニック銀座）</h2>
+      <p>ライトクリニック銀座では、抗がん剤治療中の副作用に悩む方の相談を受け付けています。</p>
+      <ul>
+        <li>標準治療を尊重した上での治療設計</li>
+        <li>分子標的薬・免疫療法の検討</li>
+        <li>治療前の遺伝子検査の活用</li>
+      </ul>
+      <p>「無理に治療を勧められるのではないか」と不安に感じる必要はありません。</p>
+
+      <div class="callout" id="cta">
+        <p style="margin:0 0 8px;"><strong>治療は、一人で抱え込むものではありません。</strong></p>
+        <p style="margin:0 0 10px;">今のつらさを整理し、あなたに合った治療の考え方を一緒に確認することから始めてみませんか。</p>
+        <div class="cta-row" style="margin-top:8px;">
+          <!-- 実運用時はフォームURLや予約導線へ差し替え -->
+          <a class="btn primary" href="#top" aria-label="相談導線（仮）">抗がん剤の副作用について相談する（無料・オンライン可）</a>
+          <a class="btn" href="#sec4">選択肢をもう一度見る</a>
+        </div>
+        <p class="kicker">※無料／オンライン可／無理な勧誘なし（表現は運用方針に合わせて調整）</p>
+      </div>
+    </section>
+
+    <footer>
+      <div>※医師監修の情報に基づいて作成しています（運用時に監修者・根拠・参照範囲を明記）</div>
+      <div>※現在の治療を否定する内容ではありません（診療行為の代替ではありません）</div>
+      <div>※広告配信・医療広告ガイドライン・各媒体ポリシーに準拠する表現へ調整が必要です</div>
+    </footer>
+  </div>
+
+  <div class="sticky-cta" role="region" aria-label="固定CTA">
+    <div class="sticky-inner">
+      <div class="label">抗がん剤の副作用に悩む方へ：無料相談（オンライン可）</div>
+      <a class="btn primary" href="#cta">相談する</a>
     </div>
-  </header>
-
-  <!-- ===== Hero Search ===== -->
-  <main id="main">
-    <section class="hero">
-      <div class="container stack">
-        <h1 class="hero__title">がんを知る。選べる治療、周囲の支え、社会復帰。</h1>
-        <p class="hero__lead">がん種・症状・治療法・悩みで横断検索。AI相談と有人コンシェルジュがあなたの一歩を支援します。</p>
-
-        <form class="search" role="search" aria-label="サイト内検索" action="/search" method="get">
-          <div class="search__row">
-            <label for="q" class="visually-hidden" style="position:absolute;left:-9999px">検索キーワード</label>
-            <input id="q" name="q" class="search__input" type="search" placeholder="例：肺がん 免疫療法 副作用／高額療養費制度／家族 仕事 両立" autocomplete="on" />
-            <button class="btn btn--primary search__btn" type="submit" aria-label="検索を実行">検索</button>
-          </div>
-          <div class="helper" aria-hidden="true">よくある検索：<span class="badge">乳がん 再発</span> <span class="badge">抗がん剤 副作用 対策</span> <span class="badge">高額療養費 申請</span></div>
-        </form>
-
-        <div class="cta-bar">
-          <a class="btn btn--primary" href="#consult">無料で相談を始める</a>
-          <a class="btn" href="#premium">有料会員なら専門家相談◯回/月</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Section: おすすめ（がん種・悩み・治療法・体験談・動画） ===== -->
-    <section id="cancers" aria-labelledby="sec-cancers">
-      <div class="container">
-        <div class="section__head">
-          <h2 id="sec-cancers" class="section__title">がんの種類から探す</h2>
-          <a href="/cancers" aria-label="がんの種類一覧へ">一覧を見る</a>
-        </div>
-        <div class="grid grid--cards">
-          <article class="card card--3">
-            <p class="eyebrow">代表例</p>
-            <h3>肺がん｜初期症状・最新治療・5年生存率</h3>
-            <p>ステージ別の治療選択と副作用対策をわかりやすく解説。</p>
-            <a class="btn btn--ghost" href="/cancers/lung" aria-label="肺がんページへ">詳しく見る</a>
-          </article>
-          <article class="card card--3">
-            <p class="eyebrow">代表例</p>
-            <h3>乳がん｜検診の重要性・再発防止法</h3>
-            <p>検診から術式、ホルモン療法まで最新情報を網羅。</p>
-            <a class="btn btn--ghost" href="/cancers/breast">詳しく見る</a>
-          </article>
-          <article class="card card--3">
-            <p class="eyebrow">代表例</p>
-            <h3>膵臓がん｜難治性がんの選択肢</h3>
-            <p>標準治療と臨床試験の動向、緩和ケアのポイント。</p>
-            <a class="btn btn--ghost" href="/cancers/pancreatic">詳しく見る</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="concerns" class="bg-soft" aria-labelledby="sec-concerns">
-      <div class="container">
-        <div class="section__head">
-          <h2 id="sec-concerns" class="section__title">悩みから探す</h2>
-          <a href="/concerns">一覧を見る</a>
-        </div>
-        <div class="grid grid--cards">
-          <article class="card card--6">
-            <h3>治療法を迷っている</h3>
-            <p>標準治療と自由診療、どう選ぶ？比較の観点を説明。</p>
-            <a class="btn btn--ghost" href="/concerns/choice">詳しく見る</a>
-          </article>
-          <article class="card card--6">
-            <h3>副作用がつらい</h3>
-            <p>吐き気・脱毛・しびれの対処法。生活のコツもまとめ。</p>
-            <a class="btn btn--ghost" href="/concerns/side-effects">詳しく見る</a>
-          </article>
-          <article class="card card--6">
-            <h3>仕事を続けたい／復帰したい</h3>
-            <p>就労支援制度、職場との向き合い方、産業医との連携。</p>
-            <a class="btn btn--ghost" href="/concerns/work">詳しく見る</a>
-          </article>
-          <article class="card card--6">
-            <h3>お金が心配</h3>
-            <p>がん治療費を抑える制度と支援まとめ。</p>
-            <a class="btn btn--ghost" href="/concerns/money">詳しく見る</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="treatments" aria-labelledby="sec-treatments">
-      <div class="container">
-        <div class="section__head">
-          <h2 id="sec-treatments" class="section__title">治療法から探す</h2>
-          <a href="/treatments">一覧を見る</a>
-        </div>
-        <div class="grid grid--cards">
-          <article class="card card--4">
-            <h3>手術</h3>
-            <p>術式・入院期間・合併症・費用目安を整理。</p>
-            <a class="btn btn--ghost" href="/treatments/surgery">詳しく見る</a>
-          </article>
-          <article class="card card--4">
-            <h3>抗がん剤（化学療法）</h3>
-            <p>レジメン、期間、副作用プロフィール。</p>
-            <a class="btn btn--ghost" href="/treatments/chemo">詳しく見る</a>
-          </article>
-          <article class="card card--4">
-            <h3>放射線治療</h3>
-            <p>適応・副作用・通院頻度の目安。</p>
-            <a class="btn btn--ghost" href="/treatments/radiation">詳しく見る</a>
-          </article>
-          <article class="card card--4">
-            <h3>免疫療法</h3>
-            <p>エビデンス、適応がん種、費用感。</p>
-            <a class="btn btn--ghost" href="/treatments/immunotherapy">詳しく見る</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="stories" class="bg-soft" aria-labelledby="sec-stories">
-      <div class="container">
-        <div class="section__head">
-          <h2 id="sec-stories" class="section__title">体験談・ストーリー</h2>
-          <a href="/stories">一覧を見る</a>
-        </div>
-        <div class="grid grid--cards">
-          <article class="card card--3">
-            <p class="eyebrow">動画</p>
-            <h3>ステージ4からの復帰に向けて</h3>
-            <p>家族の支えと副作用対策の工夫。</p>
-            <a class="btn btn--ghost" href="/stories/001">再生する</a>
-          </article>
-          <article class="card card--3">
-            <p class="eyebrow">記事</p>
-            <h3>がん治療と仕事の両立</h3>
-            <p>上司と同僚への伝え方、実例。</p>
-            <a class="btn btn--ghost" href="/stories/002">読む</a>
-          </article>
-          <article class="card card--3">
-            <p class="eyebrow">記事</p>
-            <h3>家族としてできること</h3>
-            <p>距離感・声かけ・気持ちのケア。</p>
-            <a class="btn btn--ghost" href="/stories/003">読む</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="consult" aria-labelledby="sec-consult">
-      <div class="container">
-        <div class="section__head">
-          <h2 id="sec-consult" class="section__title">質問・相談コーナー</h2>
-        </div>
-        <div class="grid grid--cards">
-          <article class="card card--6">
-            <h3>AIに質問する</h3>
-            <p>すぐに疑問を解決。相談内容はマイページに保存（会員）。</p>
-            <a class="btn btn--primary" href="/consult/ai">AI相談を始める</a>
-          </article>
-          <article class="card card--6">
-            <h3>専門家に相談する（有人）</h3>
-            <p>コンシェルジュが状況整理をサポート。面談予約に対応。</p>
-            <a class="btn btn--ghost" href="/consult/human">有人相談の案内</a>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== Footer ===== -->
-  <footer>
-    <div class="container footer__inner">
-      <nav aria-label="フッターナビ">
-        <div class="footlinks">
-          <a href="/terms">利用規約</a>
-          <a href="/privacy">プライバシーポリシー・データ同意</a>
-          <a href="/about">運営会社</a>
-          <a href="/supervision">医師監修ポリシー</a>
-          <a href="/news">ニュース</a>
-          <a href="/sitemap">サイトマップ</a>
-        </div>
-      </nav>
-      <p class="copyright">© SATOI Inc.</p>
-    </div>
-  </footer>
-
-  <script>
-    // アクセシブルなモバイルメニュー切替（ARIA対応）
-    const toggle = document.querySelector('.menu-toggle');
-    const nav = document.getElementById('primary-nav');
-    const primary = document.querySelector('.nav__primary');
-
-    function setMenu(open){
-      toggle.setAttribute('aria-expanded', open);
-      if(open){
-        primary.style.display = 'flex';
-        primary.style.flexWrap = 'wrap';
-      }else{
-        if (window.matchMedia('(min-width:980px)').matches) {
-          primary.style.display = 'flex';
-        } else {
-          primary.style.display = 'none';
-        }
-      }
-    }
-    setMenu(false);
-    toggle?.addEventListener('click', () => {
-      const opened = toggle.getAttribute('aria-expanded') === 'true';
-      setMenu(!opened);
-    });
-    // 画面幅変更時に表示状態を同期
-    window.addEventListener('resize', () => {
-      if (window.matchMedia('(min-width:980px)').matches) {
-        primary.style.display = 'flex';
-        toggle.setAttribute('aria-expanded', true);
-      } else {
-        primary.style.display = 'none';
-        toggle.setAttribute('aria-expanded', false);
-      }
-    });
-  </script>
+  </div>
 </body>
 </html>
