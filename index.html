@@ -3,350 +3,335 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="抗がん剤の副作用がつらい方へ。吐き気、食欲不振、しびれ、倦怠感…。『我慢する治療』以外の選択肢を落ち着いて整理し、オンラインで相談できます。" />
+  <meta name="description" content="抗がん剤の副作用がつらい方へ。『我慢する治療』以外の選択肢を落ち着いて整理。無料・オンライン可の相談窓口。" />
+  <title>抗がん剤の副作用がつらい方へ｜無料相談（オンライン可）</title>
   <meta name="robots" content="index,follow" />
-  <title>抗がん剤の副作用がつらい方へ｜「我慢する治療」以外の選択肢があります</title>
 
   <style>
     :root{
-      --bg:#0b1220;
-      --panel:#0f1a2e;
-      --panel2:#0c1628;
-      --text:#eaf0ff;
-      --muted:#b8c6ee;
-      --sub:#8fa4d9;
-      --line:rgba(255,255,255,.12);
-      --brand:#76b7ff;
-      --brand2:#9ef0d6;
-      --warn:#ffd27a;
-      --ok:#9ef0d6;
-      --danger:#ff7d7d;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:16px;
-      --radius2:22px;
-      --max:1100px;
-      --focus: 0 0 0 4px rgba(118,183,255,.35);
+      --bg: #f7fbff;
+      --bg2:#ffffff;
+      --card:#ffffff;
+      --text:#0b2239;
+      --muted:#4b647d;
+      --sub:#6e87a0;
+      --line:rgba(11,34,57,.10);
+      --brand:#1a86ff;
+      --brand2:#33c3a5;
+      --accent:#0fb7ff;
+      --shadow: 0 14px 40px rgba(11,34,57,.10);
+      --radius:18px;
+      --radius2:24px;
+      --max: 1060px;
+      --focus: 0 0 0 4px rgba(26,134,255,.22);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
-      background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(118,183,255,.22), transparent 55%),
-        radial-gradient(900px 500px at 90% 10%, rgba(158,240,214,.14), transparent 55%),
-        radial-gradient(1000px 600px at 60% 110%, rgba(255,210,122,.08), transparent 55%),
-        linear-gradient(180deg, #070b14 0%, #0b1220 30%, #070b14 100%);
       color:var(--text);
-      line-height:1.75;
-      letter-spacing:.02em;
+      line-height:1.78;
+      background:
+        radial-gradient(1200px 600px at 15% -10%, rgba(26,134,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 95% 5%, rgba(51,195,165,.16), transparent 55%),
+        radial-gradient(1000px 560px at 60% 110%, rgba(15,183,255,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, #ffffff 45%, var(--bg) 100%);
     }
     a{color:inherit}
-    .container{width:min(var(--max), 100% - 32px); margin:0 auto;}
-    .skip{
-      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+    .container{width:min(var(--max), calc(100% - 32px)); margin:0 auto;}
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
     }
-    .skip:focus{left:16px; top:16px; width:auto; height:auto; padding:10px 12px; background:#fff; color:#000; border-radius:10px; z-index:9999; outline:none;}
+
+    /* top bar */
     header{
       position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(12px);
-      background: rgba(11,18,32,.65);
+      backdrop-filter: blur(10px);
+      background: rgba(247,251,255,.72);
       border-bottom:1px solid var(--line);
     }
     .nav{
       display:flex; align-items:center; justify-content:space-between;
-      gap:16px; padding:12px 0;
+      gap:14px; padding:10px 0;
     }
     .brand{
       display:flex; align-items:center; gap:10px; text-decoration:none;
     }
     .logo{
-      width:38px; height:38px; border-radius:12px;
+      width:38px; height:38px; border-radius:14px;
       background:
-        radial-gradient(18px 18px at 30% 30%, rgba(158,240,214,.9), transparent 60%),
-        radial-gradient(18px 18px at 75% 70%, rgba(118,183,255,.9), transparent 60%),
-        linear-gradient(135deg, rgba(118,183,255,.28), rgba(158,240,214,.18));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+        radial-gradient(16px 16px at 30% 30%, rgba(51,195,165,.95), transparent 60%),
+        radial-gradient(18px 18px at 75% 70%, rgba(26,134,255,.95), transparent 60%),
+        linear-gradient(135deg, rgba(26,134,255,.20), rgba(51,195,165,.16));
+      border:1px solid rgba(11,34,57,.10);
+      box-shadow: 0 10px 24px rgba(11,34,57,.10);
     }
-    .brand strong{font-size:14px; letter-spacing:.06em;}
+    .brand strong{font-size:13px; letter-spacing:.05em;}
     .brand span{display:block; font-size:12px; color:var(--muted); margin-top:-2px}
-    .nav-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-    .pill{
+    .nav-right{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .chip{
       font-size:12px; color:var(--muted);
       border:1px solid var(--line);
+      background: rgba(255,255,255,.7);
       padding:7px 10px; border-radius:999px;
-      background: rgba(255,255,255,.04);
     }
+
+    /* buttons */
     .btn{
       appearance:none; border:none; cursor:pointer;
-      padding:12px 14px; border-radius:14px;
-      font-weight:700; letter-spacing:.02em;
-      background: linear-gradient(135deg, rgba(118,183,255,.95), rgba(158,240,214,.85));
-      color:#06101f;
-      box-shadow: var(--shadow);
-      transition: transform .06s ease, filter .2s ease;
-      text-decoration:none; display:inline-flex; align-items:center; gap:10px;
+      padding:12px 14px;
+      border-radius: 999px;
+      font-weight:800;
+      letter-spacing:.02em;
+      text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      transition: transform .06s ease, filter .2s ease, box-shadow .2s ease;
+      white-space:nowrap;
     }
-    .btn:hover{filter:saturate(1.05) brightness(1.03)}
-    .btn:active{transform: translateY(1px)}
-    .btn.secondary{
-      background: rgba(255,255,255,.06);
-      color:var(--text);
+    .btn.primary{
+      color:#fff;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand2) 100%);
+      box-shadow: 0 14px 30px rgba(26,134,255,.22);
+    }
+    .btn.primary:hover{filter:saturate(1.05) brightness(1.02)}
+    .btn.primary:active{transform: translateY(1px)}
+    .btn.ghost{
+      background: rgba(255,255,255,.8);
       border:1px solid var(--line);
-      box-shadow:none;
+      color: var(--text);
     }
-    .btn.secondary:hover{background: rgba(255,255,255,.09)}
-    .btn:focus{outline:none; box-shadow: var(--shadow), var(--focus)}
-    .hero{
-      padding:38px 0 10px;
-    }
-    .hero-grid{
+    .btn:focus{outline:none; box-shadow: var(--focus)}
+    .btn .spark{filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));}
+
+    /* hero */
+    .hero{padding: 22px 0 10px;}
+    .hero-wrap{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:22px;
+      grid-template-columns: 1.2fr .8fr;
+      gap:16px;
       align-items:stretch;
     }
     @media (max-width: 920px){
-      .hero-grid{grid-template-columns:1fr; gap:14px;}
+      .hero-wrap{grid-template-columns:1fr}
       .nav{flex-direction:column; align-items:flex-start}
-      .nav-actions{width:100%; justify-content:space-between}
+      .nav-right{width:100%; justify-content:space-between}
     }
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background: rgba(255,255,255,.86);
       border:1px solid var(--line);
       border-radius: var(--radius2);
       box-shadow: var(--shadow);
-      overflow:hidden;
     }
-    .card-inner{padding:22px}
+    .hero-main{padding:22px 20px;}
     .kicker{
-      display:inline-flex; gap:8px; align-items:center;
+      display:inline-flex; align-items:center; gap:8px;
       font-size:12px; color:var(--muted);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
       padding:6px 10px; border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
     }
     .dot{
       width:8px; height:8px; border-radius:999px;
       background: linear-gradient(135deg, var(--brand), var(--brand2));
     }
     h1{
-      margin:14px 0 10px;
-      font-size: clamp(26px, 3.4vw, 42px);
-      line-height:1.25;
+      margin:12px 0 10px;
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height:1.18;
       letter-spacing:.02em;
     }
-    .lead{
-      color:var(--muted);
+    .subhead{
+      margin:0 0 14px;
       font-size: 16px;
-      margin: 10px 0 16px;
+      color: var(--muted);
     }
-    .hero-points{
-      display:grid; gap:10px;
-      margin:16px 0 18px;
+    .hero-emphasis{
+      margin:14px 0 10px;
+      padding:14px 14px;
+      border-radius: 18px;
+      border:1px solid rgba(26,134,255,.18);
+      background:
+        radial-gradient(600px 180px at 10% 0%, rgba(26,134,255,.10), transparent 55%),
+        radial-gradient(600px 180px at 85% 60%, rgba(51,195,165,.10), transparent 55%),
+        rgba(255,255,255,.7);
+      color: var(--text);
     }
-    .point{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:12px 12px; border-radius:14px;
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--line);
+    .hero-emphasis b{color: var(--brand);}
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .hero-note{margin-top:10px; font-size:12px; color:var(--sub)}
+
+    /* sticky mini-cta (mobile) */
+    .sticky-cta{
+      position:fixed; left:0; right:0; bottom:0; z-index:60;
+      padding:10px 12px;
+      background: rgba(247,251,255,.9);
+      border-top:1px solid var(--line);
+      backdrop-filter: blur(10px);
+      display:none;
     }
-    .check{
-      width:20px; height:20px; border-radius:8px;
-      background: rgba(158,240,214,.14);
-      border:1px solid rgba(158,240,214,.35);
-      display:grid; place-items:center; flex:0 0 auto;
-      margin-top:2px;
-    }
-    .check svg{width:14px; height:14px; fill:var(--ok)}
-    .micro{
-      font-size:12px; color:var(--sub); margin-top:10px;
-    }
-    .side{
-      display:grid; gap:12px;
-    }
-    .side .mini{
-      background: rgba(11,18,32,.55);
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      padding:16px;
-    }
-    .mini h3{margin:0 0 8px; font-size:14px}
-    .mini p{margin:0; color:var(--muted); font-size:13px}
-    .badge-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .badge{
-      font-size:12px; color:var(--muted);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      padding:6px 10px; border-radius:999px;
+    .sticky-cta .container{display:flex; gap:10px; align-items:center; justify-content:space-between;}
+    .sticky-cta .mini{font-size:12px; color:var(--muted); line-height:1.3}
+    @media (max-width: 920px){
+      .sticky-cta{display:block;}
+      body{padding-bottom:74px;}
     }
 
-    main{padding:10px 0 70px;}
-    section{padding:22px 0;}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
-      margin:0 0 12px;
+    /* right card */
+    .hero-side{padding:18px 18px;}
+    .hero-side h3{margin:0 0 8px; font-size:14px}
+    .hero-side p{margin:0; color:var(--muted); font-size:13px}
+    .bullets{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+    .bullet{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 10px;
+      border-radius: 14px;
+      background: rgba(26,134,255,.06);
+      border:1px solid rgba(11,34,57,.08);
     }
-    .section-title h2{
+    .tick{
+      width:18px; height:18px; border-radius: 8px;
+      background: rgba(51,195,165,.16);
+      border:1px solid rgba(51,195,165,.35);
+      flex:0 0 auto;
+      display:grid; place-items:center;
+      margin-top:2px;
+    }
+    .tick svg{width:12px; height:12px; fill: var(--brand2);}
+
+    /* main */
+    main{padding: 8px 0 56px;}
+    section{padding: 18px 0;}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+      margin-bottom:10px;
+    }
+    .section-head h2{
       margin:0;
       font-size: clamp(18px, 2.2vw, 26px);
-      line-height:1.25;
+      line-height:1.2;
     }
-    .section-title .hint{color:var(--sub); font-size:12px}
-    .grid2{
-      display:grid; grid-template-columns:1fr 1fr; gap:16px;
-    }
+    .hint{font-size:12px; color:var(--sub)}
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
     @media (max-width: 920px){.grid2{grid-template-columns:1fr}}
     .panel{
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--line);
+      padding:16px;
       border-radius: var(--radius2);
-      padding:18px;
+      background: rgba(255,255,255,.86);
+      border:1px solid var(--line);
+      box-shadow: 0 10px 26px rgba(11,34,57,.06);
     }
     .panel h3{margin:0 0 8px; font-size:15px}
     .panel p{margin:0; color:var(--muted); font-size:14px}
-    .list{
-      margin:10px 0 0; padding:0; list-style:none;
-      display:grid; gap:10px;
-    }
+    .list{margin:10px 0 0; padding:0; list-style:none; display:grid; gap:10px;}
     .li{
       display:flex; gap:10px; align-items:flex-start;
-      padding:12px; border-radius:14px;
-      background: rgba(0,0,0,.14);
-      border:1px solid rgba(255,255,255,.08);
+      padding:12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.9);
+      border:1px solid rgba(11,34,57,.10);
     }
-    .li b{color:var(--text)}
-    .li .ic{
-      width:28px; height:28px; border-radius:12px;
-      background: rgba(118,183,255,.12);
-      border:1px solid rgba(118,183,255,.28);
+    .ic{
+      width:30px; height:30px; border-radius: 14px;
+      background: rgba(26,134,255,.10);
+      border:1px solid rgba(26,134,255,.18);
       display:grid; place-items:center; flex:0 0 auto;
       margin-top:2px;
     }
-    .li .ic svg{width:16px; height:16px; fill:var(--brand)}
+    .ic svg{width:16px; height:16px; fill: var(--brand)}
+    .li b{color:var(--text)}
     .callout{
+      padding:16px;
       border-radius: var(--radius2);
-      padding:18px;
+      border:1px solid rgba(26,134,255,.16);
       background:
-        radial-gradient(600px 260px at 10% 0%, rgba(118,183,255,.16), transparent 55%),
-        radial-gradient(600px 260px at 90% 60%, rgba(158,240,214,.12), transparent 55%),
-        rgba(255,255,255,.04);
-      border:1px solid rgba(255,255,255,.12);
+        radial-gradient(700px 240px at 10% 0%, rgba(26,134,255,.10), transparent 55%),
+        radial-gradient(700px 240px at 90% 60%, rgba(51,195,165,.10), transparent 55%),
+        rgba(255,255,255,.85);
+      box-shadow: 0 10px 26px rgba(11,34,57,.06);
     }
     .callout strong{display:block; margin-bottom:6px}
     .callout p{margin:0; color:var(--muted)}
-    .quote{
-      padding:16px 18px;
-      border-left: 3px solid rgba(118,183,255,.9);
-      background: rgba(255,255,255,.03);
-      border-radius: 14px;
-      color: var(--muted);
+
+    /* inline CTA strip */
+    .cta-strip{
+      margin-top:12px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:12px 12px;
+      border-radius: 18px;
+      background: rgba(26,134,255,.06);
+      border:1px solid rgba(11,34,57,.10);
+    }
+    .cta-strip .txt{font-size:13px; color:var(--muted); line-height:1.4}
+    .cta-strip .actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    @media (max-width: 720px){
+      .cta-strip{flex-direction:column; align-items:flex-start}
+      .cta-strip .actions{justify-content:flex-start}
     }
 
-    .accordion{display:grid; gap:10px;}
-    details{
-      border:1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255,255,255,.03);
-      overflow:hidden;
-    }
-    summary{
-      cursor:pointer;
-      list-style:none;
-      padding:14px 14px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-      font-weight:800;
-    }
-    summary::-webkit-details-marker{display:none}
-    .chev{
-      width:18px; height:18px; flex:0 0 auto;
-      transition: transform .18s ease;
-      opacity:.9;
-    }
-    details[open] .chev{transform: rotate(180deg)}
-    .details-body{
-      padding:0 14px 14px;
-      color: var(--muted);
-      font-size:14px;
-    }
-    .details-body .note{
-      margin-top:10px; padding:12px;
-      border-radius: 14px;
-      border:1px dashed rgba(255,255,255,.18);
-      background: rgba(0,0,0,.12);
-      color: var(--sub);
-      font-size:12px;
-    }
-
+    /* final CTA */
     .cta{
-      margin-top:22px;
-      border-radius: 24px;
-      padding:22px;
-      border:1px solid rgba(255,255,255,.14);
+      margin-top:8px;
+      padding:18px;
+      border-radius: 26px;
+      border:1px solid rgba(11,34,57,.10);
       background:
-        radial-gradient(900px 340px at 20% 0%, rgba(118,183,255,.20), transparent 55%),
-        radial-gradient(900px 340px at 85% 70%, rgba(158,240,214,.16), transparent 55%),
-        rgba(255,255,255,.04);
+        radial-gradient(900px 320px at 20% 0%, rgba(26,134,255,.14), transparent 55%),
+        radial-gradient(900px 320px at 85% 70%, rgba(51,195,165,.12), transparent 55%),
+        rgba(255,255,255,.90);
       box-shadow: var(--shadow);
-      display:grid; grid-template-columns:1.1fr .9fr; gap:16px; align-items:center;
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:14px; align-items:center;
     }
     @media (max-width: 920px){.cta{grid-template-columns:1fr}}
     .cta h3{margin:0 0 6px; font-size:18px}
     .cta p{margin:0; color:var(--muted)}
-    .cta-actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
-    @media (max-width: 920px){.cta-actions{justify-content:flex-start}}
+    .cta .cta-actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    @media (max-width: 920px){.cta .cta-actions{justify-content:flex-start}}
 
     footer{
+      margin-top:10px;
       border-top:1px solid var(--line);
-      padding:22px 0 30px;
+      padding:18px 0 26px;
       color: var(--sub);
-      background: rgba(0,0,0,.12);
+      background: rgba(255,255,255,.55);
     }
     .fine{font-size:12px; line-height:1.8}
-    .footer-grid{
-      display:grid; grid-template-columns:1fr 1fr; gap:16px;
-      align-items:start;
-    }
-    @media (max-width: 920px){.footer-grid{grid-template-columns:1fr}}
-    .sep{height:1px; background:var(--line); margin:14px 0}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
-    .tagline{font-size:12px; color:var(--muted)}
+    .sep{height:1px; background:var(--line); margin:12px 0}
 
-    /* Modal */
+    /* modal */
     .modal-backdrop{
       position:fixed; inset:0; z-index:100;
-      display:none;
-      place-items:center;
-      background: rgba(0,0,0,.55);
+      display:none; place-items:center;
+      background: rgba(11,34,57,.38);
       padding:18px;
     }
     .modal{
       width:min(760px, 100%);
-      border-radius: 22px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(15,26,46,.92);
-      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      border:1px solid rgba(11,34,57,.12);
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
     .modal-head{
       display:flex; align-items:flex-start; justify-content:space-between;
       gap:10px;
-      padding:16px 16px 10px;
+      padding:14px 16px 10px;
       border-bottom:1px solid var(--line);
     }
     .modal-head h4{margin:0; font-size:16px}
     .close{
-      appearance:none; border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
+      appearance:none;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.9);
       color: var(--text);
-      border-radius: 12px;
-      padding:8px 10px;
+      border-radius: 999px;
+      padding:8px 12px;
       cursor:pointer;
+      font-weight:800;
     }
-    .close:focus{outline:none; box-shadow: var(--focus)}
     .modal-body{padding:14px 16px 16px}
     form{display:grid; gap:10px}
     .row{display:grid; gap:6px}
@@ -354,47 +339,36 @@
     input, textarea, select{
       width:100%;
       padding:12px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.14);
+      border-radius: 16px;
+      border:1px solid rgba(11,34,57,.14);
+      background: rgba(255,255,255,.92);
       color: var(--text);
       outline:none;
     }
     textarea{min-height:110px; resize:vertical}
-    input:focus, textarea:focus, select:focus{box-shadow: var(--focus); border-color: rgba(118,183,255,.5)}
-    .form-grid{
-      display:grid; grid-template-columns:1fr 1fr; gap:10px;
-    }
+    input:focus, textarea:focus, select:focus{box-shadow: var(--focus); border-color: rgba(26,134,255,.35)}
+    .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
     @media (max-width: 720px){.form-grid{grid-template-columns:1fr}}
-    .form-actions{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px; flex-wrap:wrap;
-      margin-top:4px;
-    }
+    .form-actions{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-top:2px;}
     .small{font-size:12px; color:var(--sub)}
+
     .toast{
       position:fixed; right:16px; bottom:16px; z-index:200;
       width:min(420px, calc(100% - 32px));
       display:none;
       padding:12px 12px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(15,26,46,.92);
+      border-radius: 18px;
+      border:1px solid rgba(11,34,57,.12);
+      background: rgba(255,255,255,.94);
       backdrop-filter: blur(12px);
       box-shadow: var(--shadow);
       color: var(--muted);
     }
     .toast b{color:var(--text)}
-    .sr-only{
-      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
-      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
-    }
   </style>
 </head>
 
 <body>
-<a class="skip" href="#main">本文へスキップ</a>
-
 <header>
   <div class="container">
     <div class="nav">
@@ -402,135 +376,97 @@
         <div class="logo" aria-hidden="true"></div>
         <div>
           <strong>ライトクリニック銀座｜治療相談</strong>
-          <span>抗がん剤の副作用を「整理」して次の一手を考える</span>
+          <span>抗がん剤の副作用を「整理」して次の一手へ</span>
         </div>
       </a>
 
-      <div class="nav-actions">
-        <span class="pill" aria-label="補足情報">無料・オンライン可 / 無理な勧誘なし</span>
-        <a class="btn secondary" href="#faq">よくある質問</a>
-        <button class="btn" type="button" data-open-modal>
-          <span aria-hidden="true">🗨️</span>
-          抗がん剤の副作用について相談する
+      <div class="nav-right">
+        <span class="chip">無料・オンライン可</span>
+        <span class="chip">無理な勧誘なし</span>
+        <button class="btn primary" type="button" data-open-modal>
+          <span class="spark" aria-hidden="true">✨</span> 無料で相談する
         </button>
       </div>
     </div>
   </div>
 </header>
 
+<!-- HERO -->
 <div id="top" class="hero">
   <div class="container">
-    <div class="hero-grid">
-      <!-- Left: Main hero -->
-      <div class="card">
-        <div class="card-inner">
-          <div class="kicker"><span class="dot" aria-hidden="true"></span> 検索キーワード：抗がん剤 副作用</div>
-          <h1>抗がん剤の副作用がつらい方へ<br>―「我慢する治療」以外の選択肢があります―</h1>
+    <div class="hero-wrap">
+      <div class="card hero-main">
+        <div class="kicker"><span class="dot" aria-hidden="true"></span> 検索キーワード：抗がん剤 副作用</div>
+        <h1>抗がん剤の副作用がつらい方へ<br>―「我慢する治療」以外の選択肢があります―</h1>
 
-          <p class="lead">
-            抗がん剤治療を受ける中で、<br>
-            「副作用がつらい」「この治療を続けていいのか分からない」<br>
-            そう感じていませんか。
-          </p>
-          <p class="lead">
-            吐き気、食欲不振、手足のしびれ、強い倦怠感。<br>
-            治療を続けるほど、日常生活が削られていく感覚を抱える方は少なくありません。
-          </p>
-          <p class="lead">
-            このページは、抗がん剤の副作用に悩む方が、落ち着いて<strong>“次の選択肢”を整理</strong>するためのページです。
-          </p>
+        <p class="subhead">
+          「副作用がつらい」「この治療を続けていいのか分からない」<br>
+          そう感じていませんか。
+        </p>
 
-          <div class="hero-points" aria-label="このページで得られること">
-            <div class="point">
-              <div class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg>
-              </div>
-              <div>
-                <b>副作用が起きる理由</b>と「どこまでが想定内か」を、わかりやすく整理します。
-              </div>
-            </div>
-            <div class="point">
-              <div class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg>
-              </div>
-              <div>
-                「我慢する」だけでなく、<b>治療を設計し直す</b>という選択肢を提示します。
-              </div>
-            </div>
-            <div class="point">
-              <div class="check" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg>
-              </div>
-              <div>
-                分子標的薬・免疫療法・樹状細胞ワクチン療法など、<b>代表的な選択肢</b>を俯瞰できます。
-              </div>
-            </div>
-          </div>
+        <div class="hero-emphasis">
+          吐き気、食欲不振、手足のしびれ、強い倦怠感。<br>
+          治療を続けるほど、日常生活が削られていく感覚を抱く方は少なくありません。<br><br>
+          このページは、抗がん剤の副作用に悩む方が、落ち着いて<b>“次の選択肢”</b>を考えるためのページです。
+        </div>
 
-          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-            <button class="btn" type="button" data-open-modal>
-              <span aria-hidden="true">✅</span> 無料で相談する（オンライン可）
-            </button>
-            <a class="btn secondary" href="#understand">まずは内容を読む</a>
-          </div>
+        <div class="hero-actions">
+          <button class="btn primary" type="button" data-open-modal>無料で相談する（オンライン可）</button>
+          <a class="btn ghost" href="#empathy">まずは内容を読む</a>
+          <button class="btn ghost" type="button" data-open-modal>30秒で相談予約へ</button>
+        </div>
 
-          <p class="micro">
-            ※緊急性が高い症状（高熱・息苦しさ・意識の変化・出血など）がある場合は、<b>まず主治医/救急</b>へご相談ください。
-          </p>
+        <div class="hero-note">
+          ※高熱・息苦しさ・意識の変化・強い脱水・出血などがある場合は、まず主治医/救急へご相談ください。
         </div>
       </div>
 
-      <!-- Right: Side trust / quick summary -->
-      <div class="side">
-        <div class="mini">
-          <h3>導入文（ファーストビュー直下）</h3>
-          <p>
-            副作用は「気合で耐えるもの」ではありません。<br>
-            つらさの理由を整理し、治療の目的（延命・寛解・再発予防・QOL維持）を再確認した上で、
-            <b>あなたに合った組み合わせ</b>を検討できます。
-          </p>
-          <div class="badge-row" role="list" aria-label="特徴">
-            <span class="badge" role="listitem">標準治療を尊重</span>
-            <span class="badge" role="listitem">副作用の整理</span>
-            <span class="badge" role="listitem">選択肢の比較</span>
-            <span class="badge" role="listitem">オンライン対応</span>
+      <div class="card hero-side">
+        <h3>よくある“4つの不安”</h3>
+        <p>あなたが弱いのではなく、情報が整理されていないだけかもしれません。</p>
+        <ul class="bullets">
+          <li class="bullet">
+            <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg></div>
+            <div>副作用がつらいが、我慢するしかないと思っている</div>
+          </li>
+          <li class="bullet">
+            <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg></div>
+            <div>治療が効いているのか分からない</div>
+          </li>
+          <li class="bullet">
+            <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg></div>
+            <div>医師に「仕方ない」と言われ、不安なまま続けている</div>
+          </li>
+          <li class="bullet">
+            <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.2 16.6 4.9 12.3l1.4-1.4 2.9 2.9 8-8 1.4 1.4z"/></svg></div>
+            <div>他の治療法があると聞くが、よく分からず怖い</div>
+          </li>
+        </ul>
+
+        <div class="cta-strip" style="margin-top:14px;">
+          <div class="txt"><b>まずは“整理”だけ</b>でもOK。無理に治療は勧めません。</div>
+          <div class="actions">
+            <button class="btn primary" type="button" data-open-modal>無料で相談する</button>
           </div>
-        </div>
-
-        <div class="mini">
-          <h3>こんな方が多いです</h3>
-          <p>
-            「仕方ない」と言われたが納得できない／効いている実感がなく不安／家族に心配をかけたくない／
-            仕事や生活が限界に近い…など。<br>
-            どれも、よくある“普通の悩み”です。
-          </p>
-        </div>
-
-        <div class="mini">
-          <h3>相談で扱うテーマ例</h3>
-          <p>
-            ①副作用の全体像整理　②主治医への質問設計　③治療変更の検討材料の作り方<br>
-            ④遺伝子検査（適応の見極め）　⑤併用・支持療法の考え方　⑥生活の立て直し
-          </p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<main id="main" class="container">
+<main class="container">
 
-  <!-- 共感パート -->
-  <section aria-label="共感パート">
-    <div class="section-title">
-      <h2>その悩みは、あなた一人のものではありません</h2>
-      <div class="hint">“不安の正体”を言語化すると、選択肢が見えてきます</div>
+  <!-- 共感 -->
+  <section id="empathy">
+    <div class="section-head">
+      <h2>その悩みは、決して特別なものではありません</h2>
+      <div class="hint">「つらい」を言語化できると、次の一手が見えます</div>
     </div>
 
     <div class="grid2">
       <div class="panel">
-        <h3>抗がん剤の副作用について、よく聞かれる声</h3>
-        <ul class="list" aria-label="よくある悩み">
+        <h3>よくある声</h3>
+        <ul class="list">
           <li class="li">
             <div class="ic" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-2h2v2zm1.8-7.6-.9 1c-.6.7-.9 1.1-.9 2.6h-2v-.5c0-1 .3-1.8 1.1-2.7l1.2-1.3c.3-.3.6-.8.6-1.3a2 2 0 0 0-4 0H7.9a4.1 4.1 0 0 1 8.2 0c0 1-.4 1.9-1.3 2.6z"/></svg>
@@ -547,422 +483,248 @@
             <div class="ic" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6V11c0-3.1-1.6-5.6-4.5-6.3V4a1.5 1.5 0 0 0-3 0v.7C7.6 5.4 6 7.9 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
             </div>
-            <div><b>医師に「仕方ない」と言われ</b>、不安を抱えたまま続けている</div>
+            <div><b>「仕方ない」と言われた</b>が、気持ちが追いつかない</div>
           </li>
           <li class="li">
             <div class="ic" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 2 1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
             </div>
-            <div><b>他の治療法があると聞くが</b>、よく分からず怖い</div>
+            <div><b>別の治療があると聞くが</b>、判断材料がない</div>
           </li>
         </ul>
+
+        <div class="cta-strip">
+          <div class="txt">「一度整理したい」だけでOKです。</div>
+          <div class="actions">
+            <button class="btn primary" type="button" data-open-modal>無料で相談する</button>
+            <button class="btn ghost" type="button" data-open-modal>今すぐ予約へ</button>
+          </div>
+        </div>
       </div>
 
       <div class="callout">
-        <strong>まずお伝えしたいこと</strong>
+        <strong>まず最初にやることは「治療をやめる/続ける」の二択ではありません</strong>
         <p>
-          副作用がつらい時、心の中で起きているのは「痛み」だけではありません。<br>
-          <b>情報不足</b>、<b>比較材料の欠如</b>、<b>質問できない空気</b>、<b>家族への遠慮</b>…。
-          これらが重なって、孤独感と不安が増していきます。<br><br>
-          だからこそ、最初の一歩は「治療をやめる／続ける」ではなく、<b>状況を整理して“設計図”を描き直す</b>ことです。
+          副作用がつらい時に必要なのは、気合ではなく<b>整理</b>です。<br>
+          「何が起きているか」「何を守りたいか（生活・仕事・家族）」「次に何を確認するか」――<br>
+          これを整えるだけで、主治医との会話が変わり、選択肢が現実的になります。
         </p>
-        <div class="sep"></div>
-        <div class="quote">
-          「つらい」を言語化すると、主治医との会話が変わります。<br>
-          そして会話が変わると、治療の選び方が変わります。
-        </div>
       </div>
     </div>
   </section>
 
   <!-- セクション1 -->
-  <section id="understand" aria-label="セクション1">
-    <div class="section-title">
+  <section id="s1">
+    <div class="section-head">
       <h2>抗がん剤の副作用とは何が起きているのか</h2>
-      <div class="hint">“なぜ起きるか”が分かると、対処の方向性が見えます</div>
+      <div class="hint">副作用は「身体が出しているサイン」です</div>
     </div>
 
     <div class="grid2">
       <div class="panel">
-        <h3>副作用が起こる基本構造</h3>
+        <h3>なぜ起きる？（超シンプルに）</h3>
         <p>
-          抗がん剤は、がん細胞を攻撃する一方で、<b>増殖の速い正常細胞</b>にも影響を与えます。<br>
-          そのため、胃腸・骨髄（血球）・毛根・末梢神経などに負担が出やすくなります。
+          抗がん剤は、がん細胞を攻撃する一方で、<b>増殖が速い正常細胞</b>（胃腸・骨髄・毛根・末梢神経など）にも影響します。<br>
+          その結果として副作用が出ます。強さや種類は<b>薬剤・体質・治療歴</b>で変わります。
         </p>
-        <div class="sep"></div>
-        <p class="tagline">
-          ※副作用の種類・頻度・重症度は、薬剤、投与量、体格、肝腎機能、併用薬、年齢、既往歴などで変わります。
-        </p>
+
+        <div class="cta-strip">
+          <div class="txt">「今の症状がどれに当てはまるか」一緒に整理できます。</div>
+          <div class="actions">
+            <button class="btn primary" type="button" data-open-modal>無料で相談する</button>
+          </div>
+        </div>
       </div>
 
       <div class="panel">
-        <h3>よく見られる副作用（例）</h3>
+        <h3>よくある副作用（例）</h3>
         <ul class="list">
-          <li class="li">
-            <div class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 11H5a2 2 0 0 0-2 2v3a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-3a2 2 0 0 0-2-2z"/></svg>
-            </div>
-            <div><b>吐き気・嘔吐・下痢</b>（食事が入らない／脱水がつらい）</div>
-          </li>
-          <li class="li">
-            <div class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3c-3 2-6 6-6 10a6 6 0 1 0 12 0c0-4-3-8-6-10zm0 17a4 4 0 0 1-4-4c0-2.4 1.8-4.9 4-6.6 2.2 1.7 4 4.2 4 6.6a4 4 0 0 1-4 4z"/></svg>
-            </div>
-            <div><b>食欲不振・体重減少</b>（栄養不足／体力低下につながる）</div>
-          </li>
-          <li class="li">
-            <div class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7v3.2c0 1.3-.5 2.6-1.4 3.6L2 17.4V19h20v-1.6l-1.6-1.6c-.9-1-1.4-2.3-1.4-3.6V9a7 7 0 0 0-7-7zm0 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2z"/></svg>
-            </div>
-            <div><b>手足のしびれ・感覚異常</b>（末梢神経への影響のことがあります）</div>
-          </li>
-          <li class="li">
-            <div class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-11a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 6.6-7 11-7 11z"/></svg>
-            </div>
-            <div><b>白血球低下→感染リスク</b>（発熱時は要注意。早めの連絡が大切）</div>
-          </li>
-          <li class="li">
-            <div class="ic" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm0 6a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
-            </div>
-            <div><b>強い倦怠感・脱毛</b>（日常生活の質に大きく影響します）</div>
-          </li>
+          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7z"/></svg></div>
+            <div><b>吐き気・嘔吐・下痢</b>（食事/水分が入らない）</div></li>
+          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c-3 2-6 6-6 10a6 6 0 1 0 12 0c0-4-3-8-6-10z"/></svg></div>
+            <div><b>食欲不振・体重減少</b>（栄養/体力の低下）</div></li>
+          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7v3l-2 2v1h18v-1l-2-2V9a7 7 0 0 0-7-7z"/></svg></div>
+            <div><b>手足のしびれ</b>（感覚異常・細かい動作がつらい）</div></li>
+          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-11a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 6.6-7 11-7 11z"/></svg></div>
+            <div><b>白血球低下</b>（感染リスクが上がる）</div></li>
+          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3z"/></svg></div>
+            <div><b>強い倦怠感・脱毛</b>（生活の質に影響）</div></li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- セクション2 -->
-  <section aria-label="セクション2">
-    <div class="section-title">
-      <h2>副作用は「我慢するしかないもの」なのでしょうか</h2>
-      <div class="hint">“つらさ”は、治療の調整ポイントになることがあります</div>
+  <section id="s2">
+    <div class="section-head">
+      <h2>副作用は「我慢するしかない」のでしょうか</h2>
+      <div class="hint">我慢ではなく、調整・設計の対象です</div>
     </div>
 
     <div class="grid2">
-      <div class="panel">
-        <h3>よくある思い込み</h3>
+      <div class="callout">
+        <strong>副作用の強さは「見直しのサイン」になることがあります</strong>
         <p>
           多くの方が「抗がん剤＝副作用は避けられない」と思い込みます。<br>
-          もちろん副作用は起こり得ますが、<b>強さ・タイミング・持続</b>には意味がある場合があります。
+          ですが、医療の現場では副作用の強さが<b>治療の合い・合わなさ</b>、または<b>副作用対策の不足</b>を示している場合があります。<br><br>
+          副作用が強いからといって治療を否定する必要はありません。<br>
+          ただし、<b>治療を見直す合図</b>である可能性もあります。
         </p>
-        <div class="sep"></div>
-        <p>
-          医療現場では、副作用が強いことが「治療の合い・合わなさ」や「支持療法（副作用対策）の不足」を示していることもあります。
-        </p>
+
+        <div class="cta-strip">
+          <div class="txt">「主治医に何を聞くべきか」から一緒に作れます。</div>
+          <div class="actions">
+            <button class="btn primary" type="button" data-open-modal>無料で相談する</button>
+          </div>
+        </div>
       </div>
 
-      <div class="callout">
-        <strong>重要：副作用が強い＝失敗、ではありません</strong>
-        <p>
-          副作用が強いからといって、治療を否定する必要はありません。<br>
-          ただし、<b>治療を見直すサイン</b>である可能性もあります。<br><br>
-          そこで鍵になるのが、次の3点です。
-        </p>
-        <ul class="list" style="margin-top:12px">
-          <li class="li">
-            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></div>
-            <div><b>① 事実の整理</b>：いつから／何が／どれくらい／日常生活にどう影響？</div>
-          </li>
-          <li class="li">
-            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17h2v2H3v-2zm0-6h2v2H3v-2zm0-6h2v2H3V5zm4 12h14v2H7v-2zm0-6h14v2H7v-2zm0-6h14v2H7V5z"/></svg></div>
-            <div><b>② 対策の棚卸し</b>：吐き気止め／便通調整／栄養・水分／感染対策は十分？</div>
-          </li>
-          <li class="li">
-            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14m7-7H5" /></svg></div>
-            <div><b>③ 次の一手</b>：用量調整／休薬／レジメン変更／他治療の検討</div>
-          </li>
+      <div class="panel">
+        <h3>よくある“再設計ポイント”</h3>
+        <ul class="list">
+          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17h2v2H3v-2zm0-6h2v2H3v-2zm0-6h2v2H3V5zm4 12h14v2H7v-2zm0-6h14v2H7v-2zm0-6h14v2H7V5z"/></svg></div>
+            <div><b>副作用対策</b>（吐き気止め、便通、栄養/水分、感染対策）</div></li>
+          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16m8-8H4" /></svg></div>
+            <div><b>用量・間隔</b>（生活に耐えられる形へ調整できるか）</div></li>
+          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zm0 20V12L2 7v10l10 5 10-5V7l-10 5v10z"/></svg></div>
+            <div><b>併用・切り替え</b>（状態に合う治療へ）</div></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- セクション3 -->
-  <section aria-label="セクション3">
-    <div class="section-title">
+  <!-- セクション3〜6（短く・LP向けに圧縮） -->
+  <section id="s3">
+    <div class="section-head">
       <h2>がん治療は、抗がん剤だけではありません</h2>
-      <div class="hint">時代は「切り替え」ではなく「最適な組み合わせ」へ</div>
-    </div>
-
-    <div class="panel">
-      <p style="margin:0; color:var(--muted)">
-        現在のがん治療は、抗がん剤だけで成り立っているわけではありません。<br>
-        患者さんの状態やがんの性質に応じて、治療法を<b>組み合わせたり</b>、<b>切り替えたり</b>する時代になっています。<br><br>
-        ここからは、抗がん剤以外の代表的な治療法について、イメージが掴めるように簡単に整理します。
-      </p>
-    </div>
-  </section>
-
-  <!-- セクション4 -->
-  <section aria-label="セクション4">
-    <div class="section-title">
-      <h2>分子標的薬という選択肢</h2>
-      <div class="hint">ポイントは「適応（合う条件）」を見極めること</div>
+      <div class="hint">選択肢を“比較できる形”にすると怖さが減ります</div>
     </div>
 
     <div class="grid2">
       <div class="panel">
-        <h3>どういう治療？</h3>
+        <h3>分子標的薬（選択肢）</h3>
         <p>
-          分子標的薬は、がん細胞が持つ特定の遺伝子変異や分子（目印）を狙って作用する治療です。<br>
-          「闇雲に叩く」のではなく、<b>狙いを定めて効かせる</b>イメージに近いことがあります。
+          がん細胞の特定の遺伝子変異/分子を狙う治療。<br>
+          <b>正常細胞への影響が比較的少ない</b>ことで、副作用が軽くなるケースもあります。<br>
+          ただし<b>遺伝子検査などで適応の見極め</b>が必要です。
         </p>
-        <div class="sep"></div>
-        <p class="tagline">
-          例：EGFR、ALK、ROS1、HER2、BRAF など（がん種により異なります）
+        <div class="cta-strip">
+          <div class="txt">「自分は適応がある？」を整理できます。</div>
+          <div class="actions"><button class="btn primary" type="button" data-open-modal>無料で相談する</button></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>免疫療法（選択肢）</h3>
+        <p>
+          自分の免疫の力を使ってがんと闘う治療。抗がん剤と<b>仕組みが違う</b>ため、副作用の出方も異なります。<br>
+          「流行っているから」ではなく、<b>自分に合うか</b>を見極めることが大切です。
         </p>
+        <div class="cta-strip">
+          <div class="txt">「合う条件」と「注意点」を一緒に整理。</div>
+          <div class="actions"><button class="btn primary" type="button" data-open-modal>無料で相談する</button></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>樹状細胞ワクチン療法（考え方）</h3>
+        <p>
+          免疫に「がんを敵だと認識させる」ことを狙う治療。比較的副作用が少なく、<b>標準治療と併用</b>されることもあります。<br>
+          万能ではありませんが「知っておく価値のある選択肢」です。
+        </p>
+        <div class="cta-strip">
+          <div class="txt">併用の目的・順番の考え方も整理。</div>
+          <div class="actions"><button class="btn primary" type="button" data-open-modal>無料で相談する</button></div>
+        </div>
       </div>
 
       <div class="callout">
-        <strong>期待できる点 / 注意点</strong>
+        <strong>大切なのは「治療をやめる」ことではありません</strong>
         <p>
-          特徴として、<br>
-          ・正常な細胞への影響が比較的少ない<br>
-          ・抗がん剤より副作用が軽くなるケースがある<br>
-          といった点が挙げられます。<br><br>
-          ただし、<b>遺伝子検査等で適応を見極める</b>必要があります。
-          「試してみる」ではなく、「条件に合うか」を先に確認します。
+          つらい時ほど「続けるか、やめるか」の二択になりがちです。<br>
+          しかし実際には、治療を<b>“設計し直す”</b>という選択肢があります。<br><br>
+          ・治療法の組み合わせを見直す<br>
+          ・副作用を軽減する方向で調整する<br>
+          ・別の治療を検討する<br><br>
+          一度立ち止まり、専門家と整理することが重要です。
         </p>
-        <div class="details-body note">
-          相談では、（1）検査の有無（2）がん種・病期・治療歴（3）副作用の種類（4）生活状況 を整理し、
-          主治医に確認すべきポイントを一緒に作ります。
+        <div class="cta-strip">
+          <div class="txt"><b>今のつらさ</b>を、まず言葉にしてOK。</div>
+          <div class="actions"><button class="btn primary" type="button" data-open-modal>無料で相談する</button></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- セクション5 -->
-  <section aria-label="セクション5">
-    <div class="section-title">
-      <h2>免疫療法について</h2>
-      <div class="hint">抗がん剤とは“仕組み”が違うから、副作用の出方も違う</div>
-    </div>
-
-    <div class="grid2">
-      <div class="panel">
-        <h3>どういう治療？</h3>
-        <p>
-          免疫療法は、自分自身の免疫の力を使ってがんと闘う治療です。<br>
-          抗がん剤とは作用の仕組みが異なり、副作用の出方も異なります。
-        </p>
-        <div class="sep"></div>
-        <p class="tagline">
-          一部の免疫療法では、免疫が過剰に働くことで別の症状が出ることもあるため、適応判断と経過観察が重要です。
-        </p>
-      </div>
-
-      <div class="callout">
-        <strong>大切なのは「流行っているから」ではなく「合っているか」</strong>
-        <p>
-          すべての方に効果があるわけではありません。<br>
-          ただ、抗がん剤と併用・切り替えを行うことで、生活の質（QOL）が改善するケースもあります。<br><br>
-          免疫療法を検討する時は、次の視点が役立ちます。
-        </p>
-        <ul class="list" style="margin-top:12px">
-          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zm0 20V12L2 7v10l10 5 10-5V7l-10 5v10z"/></svg></div>
-            <div><b>① 目的</b>：延命？再発予防？腫瘍縮小？QOL維持？</div>
-          </li>
-          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3h18v2H3V3zm2 6h14v12H5V9zm2 2v8h10v-8H7z"/></svg></div>
-            <div><b>② 情報</b>：適応条件・効果の見込み・副作用の種類を“比較表”にする</div>
-          </li>
-          <li class="li"><div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zm0 6a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg></div>
-            <div><b>③ 監視</b>：何を見て安全性を担保するか（症状/検査/通院頻度）</div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- セクション6 -->
-  <section aria-label="セクション6">
-    <div class="section-title">
-      <h2>樹状細胞ワクチン療法という考え方</h2>
-      <div class="hint">免疫に「がんを敵だと認識させる」ことを狙う</div>
-    </div>
-
-    <div class="grid2">
-      <div class="panel">
-        <h3>どういう治療？</h3>
-        <p>
-          樹状細胞ワクチン療法は、免疫の司令塔とも言われる樹状細胞を活用し、免疫に「がんを敵だと認識させる」ことを目的とした治療です。<br>
-          比較的副作用が少なく、標準治療と併用されることが多い治療法です。
-        </p>
-      </div>
-
-      <div class="callout">
-        <strong>知っておく価値のある“選択肢”</strong>
-        <p>
-          万能な治療ではありません。<br>
-          ただ、抗がん剤の副作用に悩む方にとって、「副作用の少ない治療がある」という事実は、心の支えになることがあります。<br><br>
-          検討する際は、<b>治療目的</b>（何を目指すのか）と、<b>標準治療との関係</b>（併用か、順番か）を整理することが大切です。
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- セクション7 -->
-  <section aria-label="セクション7">
-    <div class="section-title">
-      <h2>大切なのは「治療をやめる」ことではありません</h2>
-      <div class="hint">二択ではなく、“設計し直す”</div>
-    </div>
-
-    <div class="callout">
-      <strong>「続けるか、やめるか」ではなく、再設計</strong>
-      <p>
-        抗がん剤の副作用がつらいと感じたとき、多くの方が「治療を続けるか、やめるか」という二択で考えてしまいます。<br><br>
-        しかし実際には、治療を<b>“設計し直す”</b>という選択肢があります。
-      </p>
-      <ul class="list" style="margin-top:12px">
-        <li class="li">
-          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14l4-4h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg></div>
-          <div><b>治療法の組み合わせ</b>を見直す（目的に合わせて“効かせ方”を変える）</div>
-        </li>
-        <li class="li">
-          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></div>
-          <div><b>副作用を軽減する方向</b>で調整する（支持療法・用量・間隔の工夫）</div>
-        </li>
-        <li class="li">
-          <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4 2 9l10 5 10-5-10-5zm0 16-10-5v2l10 5 10-5v-2l-10 5z"/></svg></div>
-          <div><b>別の治療</b>を検討する（適応があるなら、分子標的薬・免疫療法など）</div>
-        </li>
-      </ul>
-      <div class="details-body note">
-        相談のゴールは「今の治療を否定する」ことではなく、<b>納得できる判断材料</b>を揃えることです。
-      </div>
-    </div>
-  </section>
-
-  <!-- セクション8 -->
-  <section aria-label="セクション8">
-    <div class="section-title">
+  <!-- セクション8（相談） -->
+  <section id="s8">
+    <div class="section-head">
       <h2>抗がん剤の副作用に悩む方の治療相談について</h2>
       <div class="hint">ライトクリニック銀座：標準治療を尊重した上での整理</div>
     </div>
 
     <div class="grid2">
       <div class="panel">
-        <h3>相談で大切にしていること</h3>
+        <h3>相談で行うこと（シンプルに）</h3>
         <ul class="list">
           <li class="li">
-            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 3 6v6c0 5 3.4 9.7 9 11 5.6-1.3 9-6 9-11V6l-9-4zm0 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg></div>
-            <div><b>標準治療を尊重</b>した上での治療設計（否定ではなく整理）</div>
-          </li>
-          <li class="li">
             <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14l4-4h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg></div>
-            <div><b>分子標的薬・免疫療法</b>の検討（適応・安全性・生活への影響を比較）</div>
+            <div><b>副作用の経過を整理</b>（いつから/どれくらい/生活への影響）</div>
           </li>
           <li class="li">
-            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7v3l-2 2v1h18v-1l-2-2V9a7 7 0 0 0-7-7zm-1 19h2a2 2 0 0 0-2-2 2 2 0 0 0-2 2h2z"/></svg></div>
-            <div><b>治療前の遺伝子検査</b>の活用（「合う条件」の確認を重視）</div>
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17h2v2H3v-2zm0-6h2v2H3v-2zm0-6h2v2H3V5zm4 12h14v2H7v-2zm0-6h14v2H7v-2zm0-6h14v2H7V5z"/></svg></div>
+            <div><b>主治医に確認すべき質問</b>を作る（判断材料を揃える）</div>
+          </li>
+          <li class="li">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zm0 20V12L2 7v10l10 5 10-5V7l-10 5v10z"/></svg></div>
+            <div><b>選択肢の比較</b>（分子標的薬/免疫療法など、適応の可能性）</div>
           </li>
         </ul>
+
+        <div class="cta-strip">
+          <div class="txt">「無理に勧められるのが怖い」方こそ、まず整理から。</div>
+          <div class="actions"><button class="btn primary" type="button" data-open-modal>無料で相談する</button></div>
+        </div>
       </div>
 
       <div class="callout">
-        <strong>「無理に治療を勧められるのでは？」と不安な方へ</strong>
+        <strong>不安に感じる必要はありません</strong>
         <p>
-          不安に感じる必要はありません。<br>
-          私たちが最初に行うのは、治療の提案よりも、<b>あなたの状況の整理</b>です。<br><br>
-          具体的には、<b>副作用の経過</b>、<b>治療目的</b>、<b>検査・治療歴</b>、<b>生活上の制約</b>を短時間で整理し、
-          主治医と話すための「質問リスト」と「判断材料」を作っていきます。
+          「無理に治療を勧められるのではないか」と不安に感じる方がいます。<br>
+          ここでの目的は、治療の押し付けではなく、<b>あなたが納得して判断できる材料を揃えること</b>です。<br><br>
+          まずは「何が一番つらいか」だけでも構いません。
         </p>
-        <div class="sep"></div>
-        <p class="tagline">
-          ※本ページの内容は一般的情報であり、個別の診断・治療の代替ではありません。最終判断は主治医とご相談ください。
+        <div class="cta-strip">
+          <div class="txt"><b>無料・オンライン可</b>。まずは短く相談内容を送ってください。</div>
+          <div class="actions">
+            <button class="btn primary" type="button" data-open-modal>無料で申し込む</button>
+            <button class="btn ghost" type="button" data-open-modal>今すぐ予約へ</button>
+          </div>
+        </div>
+        <p class="small" style="margin-top:10px;">
+          ※本ページは一般的情報提供であり、個別の診断・治療の代替ではありません。最終判断は主治医とご相談ください。
         </p>
       </div>
     </div>
   </section>
 
-  <!-- CTA直前テキスト + CTA -->
+  <!-- FINAL CTA -->
   <section aria-label="CTA">
     <div class="cta">
       <div>
         <h3>治療は、一人で抱え込むものではありません</h3>
         <p>
-          今のつらさを整理し、あなたに合った治療の考え方を一緒に確認することから始めてみませんか。<br>
-          オンライン相談も可能です（状況に応じて、主治医への確認ポイントまで整理します）。
+          今のつらさを整理し、あなたに合った治療の考え方を一緒に確認することから始めてみませんか。
+          “相談＝治療変更”ではありません。
         </p>
-        <p class="micro" style="margin-top:10px">
-          相談のゴール：<b>「納得できる次の一手」</b>を決めるための材料を揃えること。
+        <p class="small" style="margin-top:10px;">
+          ※緊急性が高い症状がある場合は、まず主治医/救急へ。
         </p>
       </div>
       <div class="cta-actions">
-        <button class="btn" type="button" data-open-modal>
-          抗がん剤の副作用について相談する（無料・オンライン可）
-        </button>
-        <a class="btn secondary" href="#faq">先にFAQを見る</a>
+        <button class="btn primary" type="button" data-open-modal>抗がん剤の副作用について相談する（無料・オンライン可）</button>
+        <button class="btn ghost" type="button" data-open-modal>30秒で申し込む</button>
       </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" aria-label="よくある質問">
-    <div class="section-title">
-      <h2>よくある質問</h2>
-      <div class="hint">不安の“穴”を埋めてから相談するのもOKです</div>
-    </div>
-
-    <div class="accordion">
-      <details>
-        <summary>
-          今の病院（主治医）を否定されませんか？
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
-        </summary>
-        <div class="details-body">
-          否定しません。標準治療を尊重しつつ、<b>副作用の整理</b>と<b>質問設計</b>を行い、主治医との対話が進むように支援します。
-          <div class="note">「主治医に聞きづらい」ことほど、言い換え・順番・聞き方で変わることがあります。</div>
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          相談したら、必ず治療を変える必要がありますか？
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
-        </summary>
-        <div class="details-body">
-          ありません。相談の目的は、まず<b>状況を整理</b>して「続けるにしても、変えるにしても」納得できる判断材料を揃えることです。
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          どんな情報を準備するとスムーズですか？
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
-        </summary>
-        <div class="details-body">
-          可能な範囲で大丈夫ですが、あると助かるのは以下です。<br>
-          ・治療名（レジメン）/ 投与日程<br>
-          ・副作用の内容（いつから、どの程度）<br>
-          ・最近の検査結果（血液検査など）<br>
-          ・生活上の制約（仕事、介護、通院手段）<br>
-          <div class="note">分からない項目があっても問題ありません。分からないこと自体が、整理の出発点になります。</div>
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          オンライン相談はどのように進みますか？
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
-        </summary>
-        <div class="details-body">
-          ①現状の整理（副作用・治療目的・生活） → ②選択肢の俯瞰（適応の可能性） → ③主治医に確認すべき質問の作成、の順で進めます。<br>
-          ご希望があれば、メモとしてまとめやすい形式でお渡しできる想定です（運用は貴院のフローに合わせてください）。
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          緊急性が高い症状の目安はありますか？
-          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
-        </summary>
-        <div class="details-body">
-          ここでは一般論ですが、<b>高熱</b>、<b>息苦しさ</b>、<b>意識の変化</b>、<b>止まらない嘔吐</b>、<b>出血</b>、<b>強い脱水</b>などがある場合は、まず主治医または救急へご相談ください。
-          <div class="note">このLPは診断を行うものではありません。安全を最優先にしてください。</div>
-        </div>
-      </details>
     </div>
   </section>
 
@@ -970,169 +732,39 @@
 
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="mono">ライトクリニック銀座（治療相談）</div>
-        <div class="tagline">※実際の住所・電話・運用フローに合わせて差し替えてください（このHTMLは雛形です）</div>
-        <div class="sep"></div>
-        <div class="fine">
-          <b>フッター補足（信頼担保）</b><br>
-          ※医師監修の情報に基づいて作成しています<br>
-          ※無理な勧誘は行っていません<br>
-          ※現在の治療を否定する内容ではありません<br>
-          ※本ページは一般的情報提供であり、個別の診断・治療の代替ではありません
-        </div>
-      </div>
-      <div>
-        <div class="fine">
-          <b>プライバシーに関する考え方（例）</b><br>
-          ご相談内容は、相談対応と品質改善のために取り扱うことがあります。<br>
-          ただし、同意なく第三者に提供しません。<br>
-          <span class="tagline">（※貴院の実際のプライバシーポリシーURL/文面に置き換えてください）</span>
-        </div>
-        <div class="sep"></div>
-        <div class="fine">
-          <b>監修・運営メモ</b><br>
-          文章や表現は、貴院の提供範囲（標準治療の位置づけ、自由診療の説明方針、同意書・費用提示）に合わせて調整してください。
-        </div>
-      </div>
+    <div class="fine">
+      <b>フッター補足（信頼担保）</b><br>
+      ※医師監修の情報に基づいて作成しています<br>
+      ※無理な勧誘は行っていません<br>
+      ※現在の治療を否定する内容ではありません
+      <div class="sep"></div>
+      <span>（※実運用では、住所・診療時間・プライバシーポリシー等を貴院情報に差し替えてください）</span>
     </div>
-    <div class="sep"></div>
-    <div class="tagline">© <span id="y"></span> Light Clinic Ginza. All rights reserved.</div>
   </div>
 </footer>
 
-<!-- Modal -->
-<div class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" id="modal">
+<!-- MOBILE STICKY CTA -->
+<div class="sticky-cta" aria-hidden="false">
+  <div class="container">
+    <div class="mini">
+      <b>無料・オンライン可</b><br>
+      副作用のつらさ、まず整理から
+    </div>
+    <button class="btn primary" type="button" data-open-modal>無料で相談する</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" id="modal">
   <div class="modal">
     <div class="modal-head">
       <div>
-        <h4 id="modalTitle">抗がん剤の副作用について相談する（無料・オンライン可）</h4>
-        <div class="tagline" id="modalDesc">入力された内容は送信されません（デモ）。実運用ではフォーム送信先/API連携を実装してください。</div>
+        <h4 id="modalTitle">無料相談のお申し込み（オンライン可）</h4>
+        <div class="small">※デモ：このHTML単体では送信されません（実運用は送信先/API連携を実装してください）</div>
       </div>
-      <button class="close" type="button" data-close-modal aria-label="閉じる">閉じる</button>
+      <button class="close" type="button" data-close-modal>閉じる</button>
     </div>
     <div class="modal-body">
       <form id="consultForm">
         <div class="form-grid">
-          <div class="row">
-            <label for="name">お名前（任意）</label>
-            <input id="name" name="name" autocomplete="name" placeholder="例：山田 太郎" />
-          </div>
-          <div class="row">
-            <label for="contact">連絡先（メール or 電話）</label>
-            <input id="contact" name="contact" autocomplete="email" placeholder="例：example@email.com / 090-xxxx-xxxx" required />
-          </div>
-        </div>
-
-        <div class="form-grid">
-          <div class="row">
-            <label for="who">ご相談者</label>
-            <select id="who" name="who">
-              <option value="patient">患者本人</option>
-              <option value="family">家族・支援者</option>
-              <option value="other">その他</option>
-            </select>
-          </div>
-          <div class="row">
-            <label for="pref">相談方法</label>
-            <select id="pref" name="pref">
-              <option value="online">オンライン</option>
-              <option value="visit">来院（可能なら）</option>
-              <option value="either">どちらでも</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row">
-          <label for="symptoms">現在つらい症状（箇条書きでOK）</label>
-          <textarea id="symptoms" name="symptoms" placeholder="例：吐き気が毎日、食事が半分しか取れない／手足のしびれでボタンが留めづらい／だるさで通勤が難しい など"></textarea>
-        </div>
-
-        <div class="row">
-          <label for="history">治療状況（分かる範囲で）</label>
-          <textarea id="history" name="history" placeholder="例：○月から抗がん剤開始、2週に1回投与。病名・がん種・治療歴など（不明でもOK）"></textarea>
-        </div>
-
-        <div class="row">
-          <label class="small">
-            <input type="checkbox" required />
-            緊急性が高い症状（高熱・息苦しさ等）がある場合は、まず主治医/救急へ連絡することを理解しました
-          </label>
-        </div>
-
-        <div class="form-actions">
-          <button class="btn" type="submit">この内容で相談予約の希望を送る（デモ）</button>
-          <button class="btn secondary" type="button" data-close-modal>キャンセル</button>
-        </div>
-
-        <div class="small">
-          ※実運用では、<span class="mono">POST /api/consult</span> 等に送信し、サンクスページへ遷移させるのが一般的です。
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<script>
-  // Year
-  document.getElementById('y').textContent = new Date().getFullYear();
-
-  // Modal handlers
-  const modal = document.getElementById('modal');
-  const openers = document.querySelectorAll('[data-open-modal]');
-  const closers = document.querySelectorAll('[data-close-modal]');
-  const focusableSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-  let lastFocused = null;
-
-  function openModal(){
-    lastFocused = document.activeElement;
-    modal.style.display = 'grid';
-    document.body.style.overflow = 'hidden';
-    const first = modal.querySelector(focusableSelector);
-    if(first) first.focus();
-  }
-  function closeModal(){
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-    if(lastFocused) lastFocused.focus();
-  }
-
-  openers.forEach(btn => btn.addEventListener('click', openModal));
-  closers.forEach(btn => btn.addEventListener('click', closeModal));
-  modal.addEventListener('click', (e) => {
-    if(e.target === modal) closeModal();
-  });
-  window.addEventListener('keydown', (e) => {
-    if(modal.style.display === 'grid' && e.key === 'Escape') closeModal();
-    // Focus trap
-    if(modal.style.display === 'grid' && e.key === 'Tab'){
-      const focusables = Array.from(modal.querySelectorAll(focusableSelector)).filter(el => !el.disabled);
-      if(!focusables.length) return;
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
-      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-    }
-  });
-
-  // Demo submit
-  const form = document.getElementById('consultForm');
-  const toast = document.getElementById('toast');
-  function showToast(html){
-    toast.innerHTML = html;
-    toast.style.display = 'block';
-    setTimeout(() => toast.style.display = 'none', 5200);
-  }
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    closeModal();
-    showToast('<b>送信デモ完了</b><br>実運用ではフォーム送信先（メール/CRM/予約システム）と連携してください。');
-    form.reset();
-  });
-</script>
-</body>
-</html>
+         
