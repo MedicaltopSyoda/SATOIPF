@@ -728,6 +728,67 @@
     </div>
   </section>
 
+  <!-- ★ ここから追加：ページ下部のお問い合わせフォーム（元のHTMLは崩さず、下に挿入） -->
+  <section id="contact" aria-label="お問い合わせフォーム">
+    <div class="section-head">
+      <h2>お問い合わせ</h2>
+      <div class="hint">無料相談の前に、まずは質問だけでもOKです</div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3>入力は1分</h3>
+        <p>
+          「副作用がつらい」「まず何を確認すべき？」など、短くで構いません。<br>
+          こちらから折り返しご連絡します（オンライン可）。
+        </p>
+
+        <div class="cta-strip" style="margin-top:12px;">
+          <div class="txt">迷っている段階でも大丈夫です。状況整理から始められます。</div>
+          <div class="actions">
+            <a class="btn primary" href="#contact">お問い合わせする</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>お問い合わせフォーム</strong>
+        <p class="small" style="margin-top:6px;">
+          ※デモ：このHTML単体では送信されません（実運用では送信先/API連携を実装してください）
+        </p>
+
+        <form id="contactForm" style="margin-top:10px;">
+          <div class="form-grid">
+            <div class="row">
+              <label for="c_name">氏名</label>
+              <input id="c_name" name="name" placeholder="例：山田 太郎" autocomplete="name" required />
+            </div>
+
+            <div class="row">
+              <label for="c_email">メールアドレス</label>
+              <input id="c_email" name="email" type="email" placeholder="例：example@email.com" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <label for="c_tel">電話（任意）</label>
+            <input id="c_tel" name="tel" type="tel" placeholder="例：090-xxxx-xxxx" autocomplete="tel" />
+          </div>
+
+          <div class="form-actions">
+            <button class="btn primary" type="submit">送信する（デモ）</button>
+            <button class="btn ghost" type="reset">クリア</button>
+          </div>
+
+          <div class="small">
+            ※緊急性が高い症状（高熱・息苦しさ・意識の変化・出血など）がある場合は、まず主治医/救急へご相談ください。
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- ★ 追加ここまで -->
+
 </main>
 
 <footer>
@@ -767,4 +828,90 @@
     <div class="modal-body">
       <form id="consultForm">
         <div class="form-grid">
-         
+          <div class="row">
+            <label for="name">お名前（任意）</label>
+            <input id="name" name="name" placeholder="例：山田 太郎" autocomplete="name" />
+          </div>
+          <div class="row">
+            <label for="contact">連絡先（メール or 電話）</label>
+            <input id="contact" name="contact" placeholder="例：example@email.com / 090-xxxx-xxxx" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="symptoms">今つらい症状（短くでOK）</label>
+          <textarea id="symptoms" name="symptoms" placeholder="例：吐き気が続く／食事が取れない／しびれが強い／倦怠感で生活が回らない など"></textarea>
+        </div>
+
+        <div class="row">
+          <label for="pref">相談方法</label>
+          <select id="pref" name="pref">
+            <option value="online">オンライン希望</option>
+            <option value="either">どちらでも</option>
+            <option value="visit">来院希望（可能なら）</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn primary" type="submit">無料で申し込む（デモ）</button>
+          <button class="btn ghost" type="button" data-close-modal>キャンセル</button>
+        </div>
+
+        <div class="small">
+          ※緊急性が高い症状（高熱・息苦しさ・意識の変化・出血など）がある場合は、まず主治医/救急へご相談ください。
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  const modal = document.getElementById('modal');
+  const openers = document.querySelectorAll('[data-open-modal]');
+  const closers = document.querySelectorAll('[data-close-modal]');
+  const form = document.getElementById('consultForm');
+  const toast = document.getElementById('toast');
+
+  function openModal(){
+    modal.style.display = 'grid';
+    document.body.style.overflow = 'hidden';
+    const first = modal.querySelector('input, textarea, select, button');
+    if(first) first.focus();
+  }
+  function closeModal(){
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  openers.forEach(b => b.addEventListener('click', openModal));
+  closers.forEach(b => b.addEventListener('click', closeModal));
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+  window.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.style.display === 'grid') closeModal(); });
+
+  function showToast(html){
+    toast.innerHTML = html;
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 5200);
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    closeModal();
+    showToast('<b>申し込みデモ完了</b><br>実運用ではフォーム送信先（予約/CRM/メール）と連携してください。');
+    form.reset();
+  });
+
+  // ★ ここから追加：ページ下部お問い合わせフォーム（デモ送信）
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('<b>お問い合わせデモ完了</b><br>実運用ではフォーム送信先（メール/CRM/予約システム）と連携してください。');
+      contactForm.reset();
+    });
+  }
+  // ★ 追加ここまで
+</script>
+</body>
+</html>
